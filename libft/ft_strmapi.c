@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 16:44:53 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 12:59:29 by lunagda          ###   ########.fr       */
+/*   Created: 2023/11/07 15:33:27 by lunagda           #+#    #+#             */
+/*   Updated: 2023/11/07 15:43:38 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	char	*temp1;
-	char	*temp2;
+	int		i;
+	char	*res;
 
 	i = 0;
-	temp1 = (char *)dest;
-	temp2 = (char *)src;
-	if (src > dest)
+	res = (char *)malloc((ft_strlen((char *)s) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	while (s[i])
 	{
-		while (i < n)
-		{
-			temp1[i] = temp2[i];
-			i++;
-		}
+		res[i] = f(i, s[i]);
+		i++;
 	}
-	else if (src < dest)
-	{
-		while (n > 0)
-		{
-			temp1[n] = temp2[n];
-			n--;
-		}
-	}
+	return (res);
 }

@@ -3,25 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:44:30 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 10:28:43 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:10:18 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*calloc(unsigned int nitems, unsigned int size)
+void	*calloc(size_t nmemb, size_t size)
 {
 	char	*p;
 
-	if (nitems == 0 || size == 0)
+	if (nmemb == 0 || size == 0)
 		return (NULL);
 	else
 	{
-		p = malloc(nitems * size);
-		ft_bzero(p, nitems * size);
+		p = malloc(nmemb * size);
+		if (!p)
+			return (NULL);
+		ft_bzero(p, nmemb * size);
 		return (p);
 	}
 }
