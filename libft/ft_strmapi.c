@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:33:27 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/07 15:43:38 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:03:24 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		res[i] = f(i, s[i]);
 		i++;
 	}
+	res[i] = '\0';
 	return (res);
 }
