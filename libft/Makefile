@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
+#    By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:56:49 by lunagda           #+#    #+#              #
-#    Updated: 2023/11/08 14:04:58 by lunagda          ###   ########.fr        #
+#    Updated: 2023/11/08 16:24:31 by luynagda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRCS			=	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 					ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c
 OBJS			= $(SRCS:.c=.o)
 
-BONUS			=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
-					ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
-					ft_lstmap.c ft_lstnew.c ft_lstsize.c
+BONUS			=	ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus.c \
+					ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_lstlast_bonus.c \
+					ft_lstmap_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c
 BONUS_OBJS		= $(BONUS:.c=.o)
 
 CC				= cc

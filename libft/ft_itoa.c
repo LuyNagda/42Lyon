@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:40:35 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/08 13:52:17 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:21:10 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ int	find_num_len(long int n)
 
 char	*ft_itoa(int n)
 {
-	int			i;
 	long int	nb;
 	int			len;
 	char		*res;
 
-	i = 0;
 	nb = (long int)n;
 	len = find_num_len(nb);
 	res = (char *)malloc((len + 1) * sizeof(char));

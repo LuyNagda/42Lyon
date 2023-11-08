@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:42:52 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/08 14:58:41 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:44:06 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,28 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*head;
 	t_list	*new_list;
+	t_list	*temp;
 
 	if (!del)
 		return (0);
-	head = lst;
-	new_list = ft_lstnew(f(head->content));
-	head = head->next;
-	while (head)
+	new_list = ft_lstnew(f(lst->content));
+	if (new_list == NULL)
 	{
-		ft_lstadd_back(&new_list, f(head->content));
-		head = head->next;
+		ft_lstclear(&new_list, del);
+		return (NULL);
+	}
+	lst = lst->next;
+	while (lst)
+	{
+		temp = ft_lstnew(f(lst->content));
+		if (temp == NULL)
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_list, temp);
+		lst = lst->next;
 	}
 	return (new_list);
 }
