@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:11:33 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 13:11:24 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:40:28 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t len)
 	size_t	i;
 
 	i = 0;
+	if (len == 0)
+	{
+		while (src[i])
+			i++;
+		return (i);
+	}
 	while (i < (len - 1) && src[i] && len != 0)
 	{
 		dst[i] = src[i];

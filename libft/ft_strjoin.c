@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:15:33 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/07 11:34:43 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 10:40:42 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!trg)
 		return (NULL);
 	while (s1[i])
-		trg[i++] = s1[i];
+	{
+		trg[i] = s1[i];
+		i++;
+	}
 	i = 0;
 	while (s2[i])
 		trg[s1_len++] = s2[i++];

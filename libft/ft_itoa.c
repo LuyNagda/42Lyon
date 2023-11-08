@@ -6,13 +6,13 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:40:35 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/07 16:43:29 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:52:17 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	find_num_len(int n)
+int	find_num_len(long int n)
 {
 	int	count;
 
@@ -34,29 +34,29 @@ int	find_num_len(int n)
 
 char	*ft_itoa(int n)
 {
-	int		i;
-	int		len;
-	char	*res;
+	int			i;
+	long int	nb;
+	int			len;
+	char		*res;
 
 	i = 0;
-	if (n == -2147483648)
-		return ("-2147483648");
-	len = find_num_len(n);
+	nb = (long int)n;
+	len = find_num_len(nb);
 	res = (char *)malloc((len + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
-	if (n < 0)
+	if (nb < 0)
 	{
 		res[0] = '-';
-		n = -n;
+		nb = -nb;
 	}
-	else if (n == 0)
+	else if (nb == 0)
 		res[0] = '0';
 	res[len--] = '\0';
-	while (n > 0)
+	while (nb > 0)
 	{
-		res[len--] = (n % 10) + 48;
-		n = n / 10;
+		res[len--] = (nb % 10) + 48;
+		nb = nb / 10;
 	}
 	return (res);
 }

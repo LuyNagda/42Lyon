@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:30:10 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 15:37:13 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:55:20 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
-	char	*temp;
+	size_t			i;
+	unsigned char	*temp;
 
 	i = 0;
-	temp = (char *)s;
-	while (temp[i] != c && i < n)
+	temp = (unsigned char *)s;
+	while (i < n)
+	{
+		if (temp[i] == (unsigned char)c)
+			return (&temp[i]);
 		i++;
-	return (temp[i]);
+	}
+	return (NULL);
 }

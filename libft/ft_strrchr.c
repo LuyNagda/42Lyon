@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:31:19 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 13:19:02 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:08:37 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ char	*ft_strrchr(const char *s, int c)
 	i = 0;
 	while (s[i] != '\0')
 		i++;
-	while (s[i] != c)
+	if ((unsigned char)c == '\0')
+		return ((char *)&s[i]);
+	i--;
+	while (s[i] && s[i] != (unsigned char)c)
 		i--;
-	return (s[i]);
+	if (i < 0)
+		return (NULL);
+	return ((char *)&s[i]);
 }

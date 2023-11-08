@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:44:53 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 12:59:29 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:55:36 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	{
 		while (n > 0)
 		{
-			temp1[n] = temp2[n];
+			temp1[n - 1] = temp2[n - 1];
 			n--;
 		}
 	}
+	return (dest);
 }

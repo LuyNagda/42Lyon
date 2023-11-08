@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:15:03 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/07 15:44:02 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:48:03 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,9 @@ char	*ft_strndup(char *src, int start, int stop)
 {
 	char	*trg;
 	int		i;
-	int		count;
 
-	count = 0;
-	while (src[count])
-	{
-		count++;
-	}
 	i = 0;
-	trg = (char *)malloc(count * sizeof(char));
+	trg = (char *)malloc((stop - start + 1) * sizeof(char));
 	while (src[start] && start < stop)
 		trg[i++] = src[start++];
 	trg[i] = '\0';
@@ -33,7 +27,7 @@ char	*ft_strndup(char *src, int start, int stop)
 
 int	is_seperator(char s, char c)
 {
-	if (s == c)
+	if (s == c || s == '\0')
 		return (1);
 	return (0);
 }
@@ -52,8 +46,6 @@ int	count_words(char const *str, char c)
 			words++;
 		i++;
 	}
-	if (str[i] == '\0' && words > 0)
-		words++;
 	return (words);
 }
 
