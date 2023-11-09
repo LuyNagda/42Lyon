@@ -6,7 +6,7 @@
 #    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:56:49 by lunagda           #+#    #+#              #
-#    Updated: 2023/11/09 11:09:13 by lunagda          ###   ########.fr        #
+#    Updated: 2023/11/09 11:44:21 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NAME			= libft.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
+$(NAME):		$(OBJS) libft.h
 				ar rcs $(NAME) $(OBJS)
 
 clean:
