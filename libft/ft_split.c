@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:15:03 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/08 13:48:03 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/09 10:54:08 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strndup(char *src, int start, int stop)
 
 	i = 0;
 	trg = (char *)malloc((stop - start + 1) * sizeof(char));
+	if (!trg)
+		return (NULL);
 	while (src[start] && start < stop)
 		trg[i++] = src[start++];
 	trg[i] = '\0';

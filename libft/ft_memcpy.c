@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:37:07 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 12:58:46 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/09 10:12:25 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char	*temp2;
 
 	i = 0;
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	temp1 = (char *)dest;
 	temp2 = (char *)src;
 	while (i < n)

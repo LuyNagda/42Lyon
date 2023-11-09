@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:36:22 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/08 12:02:33 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/09 10:29:37 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (little[0] == '\0')
 		return ((char *)big);
-	if (len == 0)
+	if (len == 0 || ft_strlen((char *)big) < ft_strlen((char *)little))
 		return (NULL);
 	while (big[i] != '\0')
 	{

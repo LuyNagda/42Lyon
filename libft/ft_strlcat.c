@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:14:16 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 13:08:10 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/09 10:25:13 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 	size_t	result;
 
+	if (dst == NULL && size == 0)
+		return (0);
 	result = (size_t)ft_strlen((char *)src);
 	len = (size_t)ft_strlen(dst);
 	i = 0;
