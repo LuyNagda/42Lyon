@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:35:15 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/09 10:40:30 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/10 16:48:57 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (len >= string_len)
 		len = string_len - start;
-	if ((size_t)start >= string_len)
-		return ((char *)malloc(sizeof(char)));
+	if ((size_t)start >= string_len || !s)
+		return (ft_strdup(""));
 	end = start + len;
 	trg = (char *)malloc((len + 1) * sizeof(char));
 	if (!trg)

@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:15:03 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/09 10:54:08 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/10 17:11:33 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	**ft_split(char const *s, char c)
 	start = 0;
 	words = count_words(s, c);
 	tab = (char **)malloc((words + 1) * sizeof(char *));
+	if (!tab)
+		return (NULL);
 	while (j < words)
 	{
 		while (is_seperator(s[i], c))
@@ -71,8 +73,7 @@ char	**ft_split(char const *s, char c)
 		start = i;
 		while (!(is_seperator(s[i], c)))
 			i++;
-		tab[j] = ft_strndup((char *)s, start, i);
-		j++;
+		tab[j++] = ft_strndup((char *)s, start, i);
 	}
 	tab[j] = 0;
 	return (tab);

@@ -6,15 +6,15 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:03:41 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/07 13:11:50 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/10 15:46:44 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	count;
+	size_t	count;
 
 	count = 0;
 	while (s[count] != '\0')

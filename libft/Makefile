@@ -6,7 +6,7 @@
 #    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:56:49 by lunagda           #+#    #+#              #
-#    Updated: 2023/11/09 11:44:21 by lunagda          ###   ########.fr        #
+#    Updated: 2023/11/10 16:38:32 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,17 @@ BONUS_OBJS		= $(BONUS:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+CFLAGS			= -Wall -Wextra -Werror
+HEADER			= libft.h
 
 NAME			= libft.a
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) libft.h
+$(OBJS):		$(HEADER)
+$(BONUS_OBJS):	$(HEADER)
+
+$(NAME):		$(OBJS)
 				ar rcs $(NAME) $(OBJS)
 
 clean:
