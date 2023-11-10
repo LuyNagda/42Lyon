@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:12:33 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/09 13:53:53 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/10 15:10:56 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	ft_putnbr(int n);
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
-void	ft_print_hexa(int n, int c);
+void	ft_print_hexa(long int n, int c);
 
 #endif

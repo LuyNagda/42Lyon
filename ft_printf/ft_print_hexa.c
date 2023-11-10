@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:55:16 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/09 13:52:35 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/10 15:20:24 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	ft_print_caps_nocaps(char *res, int c)
 	len = ft_strlen(res) - 1;
 	caps_hex = "0123456789ABCDEF";
 	hex = "0123456789abcdef";
-	if (c == 120)
+	if (c == 'p')
+		ft_putstr("0x");
+	if (c == 'x' || c == 'p')
 	{
 		while (res[len])
 		{
@@ -39,13 +41,11 @@ void	ft_print_caps_nocaps(char *res, int c)
 	}
 }
 
-void	ft_print_hexa(int n, int c)
+void	ft_print_hexa(long int nb, int c)
 {
-	long int 	nb;
 	char		res[16];
 	int			i;
-	
-	nb = n;
+
 	i = 0;
 	if (nb < 0)
 	{
