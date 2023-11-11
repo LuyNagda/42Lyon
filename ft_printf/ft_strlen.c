@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:13:44 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/09 12:25:45 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/11 14:09:19 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_strlen(char *str)
 {
 	int	count;
 
+	if (!str)
+		return (1);
 	count = 0;
 	while (str[count])
 	{

@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 12:12:01 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/11 11:32:11 by lunagda          ###   ########.fr       */
+/*   Created: 2023/11/11 13:29:05 by lunagda           #+#    #+#             */
+/*   Updated: 2023/11/11 14:35:26 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_print_unsigned(unsigned int n)
 {
-	write(1, &c, 1);
-	return (1);
+	long long int	nb;
+
+	nb = n;
+	if (nb > 9)
+	{
+		ft_print_unsigned(nb / 10);
+		ft_print_unsigned(nb % 10);
+	}
+	else
+	{
+		ft_putchar(nb + '0');
+	}
+	return (ft_num_len(nb));
 }

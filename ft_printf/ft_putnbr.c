@@ -6,13 +6,35 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 12:14:53 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/09 12:59:20 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/11 13:43:15 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n)
+int	ft_num_len(long int n)
+{
+	long int	nb;
+	int			count;
+
+	count = 0;
+	nb = n;
+	if (nb < 0)
+	{
+		count++;
+		nb = -nb;
+	}
+	if (nb == 0)
+		return (1);
+	while (nb)
+	{
+		count++;
+		nb /= 10;
+	}
+	return (count);
+}
+
+int	ft_putnbr(int n)
 {
 	long int	nb;
 
@@ -31,4 +53,5 @@ void	ft_putnbr(int n)
 	{
 		ft_putchar(nb + '0');
 	}
+	return (ft_num_len((long int)n));
 }
