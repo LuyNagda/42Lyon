@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:18:02 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/13 17:43:21 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/15 14:42:32 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@
 
 char	*get_next_line(int fd);
 int		ft_strchr(const char *s, int c);
+char	*ft_strcatdup(char *dst, const char *src);
+char	*ft_strndup(char *src, int start, int stop);
+size_t	ft_strlen(const char *s);
 
 #endif
