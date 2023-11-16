@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:19:26 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/15 17:06:59 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/16 17:01:08 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,24 @@ int	ft_strchr(const char *s, int c)
 	return (i);
 }
 
-char	*ft_strcpy(char *dst, const char *src)
+char	*ft_strdup(const char *src)
 {
-	size_t	i;
+	char	*trg;
+	int		i;
 
 	i = 0;
+	if (!src)
+		return (NULL);
+	trg = (char *)malloc(ft_strlen((char *)src) * sizeof(char) + 1);
+	if (!trg)
+		return (NULL);
 	while (src[i])
 	{
-		dst[i] = src[i];
+		trg[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	trg[i] = '\0';
+	return (trg);
 }
 
 char	*ft_strndup(char *src, int start, int stop)
@@ -78,7 +84,13 @@ char	*ft_strcatdup(char *dst, const char *src)
 	len = ft_strlen(dst) + ft_strlen(src);
 	i = 0;
 	trg = (char *)malloc((len + 2) * sizeof(char));
-	trg = ft_strcpy(trg, dst);
+	while (dst[i])
+	{
+		trg[i] = dst[i];
+		i++;
+	}
+	trg[i] = '\0';
+	i = 0;
 	free(dst);
 	while (src[i])
 	{

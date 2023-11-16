@@ -6,32 +6,12 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:45:23 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/15 17:57:03 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/16 17:42:25 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
-
-char	*ft_strdup(const char *src)
-{
-	char	*trg;
-	int		i;
-
-	i = 0;
-	if (!src)
-		return (NULL);
-	trg = (char *)malloc(ft_strlen((char *)src) * sizeof(char) + 1);
-	if (!trg)
-		return (NULL);
-	while (src[i])
-	{
-		trg[i] = src[i];
-		i++;
-	}
-	trg[i] = '\0';
-	return (trg);
-}
 
 char	*ft_strcut(char *str)
 {
@@ -47,23 +27,43 @@ char	*ft_strcut(char *str)
 	return (trg);
 }
 
+void	offset_buffer(char (*buffer)[BUFFER_SIZE + 1])
+{
+	int	i;
+	int	j;
+
+	i = ft_strchr((const char *)buffer, '\n') + 1;
+	j = 0;
+	while (i < (BUFFER_SIZE + 1))
+	{
+		(*buffer)[j] = (*buffer)[i];
+		j++;
+		i++;
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	int			c;
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*str;
+	int			i;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
 		return (NULL);
 	c = -1;
 	str = NULL;
-	if (buffer[0] != '\0')
+	if (buffer[0] != '\0' && c != 0)
 	{
-		int	i = 0;
+		i = 0;
 		while (buffer[i] != '\n')
 			i++;
 		if (buffer[++i] != '\0')
-			str = ft_strndup(buffer, ft_strchr(buffer, '\n') + 1, ft_strlen(buffer));
+		{
+			str = ft_strndup(buffer, \
+			ft_strchr(buffer, '\n') + 1, ft_strlen(buffer));
+		}
+		offset_buffer(&buffer);
 	}
 	while (c != 0 && ft_strchr(str, '\n') == -1)
 	{
@@ -92,13 +92,33 @@ char	*get_next_line(int fd)
 //	char	*temp;
 
 //	temp = get_next_line(fd);
-//	printf("%s", temp);
+//	printf("1: %s", temp);
 //	free(temp);
 //	temp = get_next_line(fd);
-//	printf("%s", temp);
+//	printf("2: %s", temp);
 //	free(temp);
 //	temp = get_next_line(fd);
-//	printf("%s", temp);
+//	printf("3: %s", temp);
 //	free(temp);
-	
+//	temp = get_next_line(fd);
+//	printf("4: %s", temp);
+//	free(temp);
+//	temp = get_next_line(fd);
+//	printf("5: %s", temp);
+//	free(temp);
+//	temp = get_next_line(fd);
+//	printf("6: %s", temp);
+//	free(temp);
+//	temp = get_next_line(fd);
+//	printf("7: %s", temp);
+//	free(temp);
+//	temp = get_next_line(fd);
+//	printf("8: %s", temp);
+//	free(temp);
+//	temp = get_next_line(fd);
+//	printf("9: %s", temp);
+//	free(temp);
+//	temp = get_next_line(fd);
+//	printf("10: %s", temp);
+//	free(temp);
 //}
