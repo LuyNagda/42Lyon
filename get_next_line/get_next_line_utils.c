@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:19:26 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/16 17:01:08 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/16 22:53:45 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	*ft_strcatdup(char *dst, const char *src)
 	dst_len = ft_strlen(dst);
 	len = ft_strlen(dst) + ft_strlen(src);
 	i = 0;
-	trg = (char *)malloc((len + 2) * sizeof(char));
+	trg = (char *)malloc((len + 1) * sizeof(char));
 	while (dst[i])
 	{
 		trg[i] = dst[i];

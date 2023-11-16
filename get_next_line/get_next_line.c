@@ -3,15 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:45:23 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/16 17:42:25 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/16 22:52:36 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	size_t	i;
+	char	*temp;
+
+	i = 0;
+	temp = (char *)s;
+	while (i < n)
+	{
+		temp[i] = c;
+		i++;
+	}
+	return (s);
+}
 
 char	*ft_strcut(char *str)
 {
@@ -42,18 +57,39 @@ void	offset_buffer(char (*buffer)[BUFFER_SIZE + 1])
 	}
 }
 
+char	*while_loop(int fd, char *str, char (*buffer)[BUFFER_SIZE + 1])
+{
+	int	c;
+
+	c = -1;
+	while (c != 0 && ft_strchr(str, '\n') == -1)
+	{
+		c = read(fd, *buffer, BUFFER_SIZE);
+		(*buffer)[c] = '\0';
+		if (c != 0)
+		{
+			if (!str)
+				str = ft_strdup((*buffer));
+			else
+				str = ft_strcatdup(str, (*buffer));
+		}
+	}
+	return (ft_strcut(str));
+}
+
 char	*get_next_line(int fd)
 {
-	int			c;
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*str;
 	int			i;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
+	{
+		buffer[0] = '\0';
 		return (NULL);
-	c = -1;
+	}
 	str = NULL;
-	if (buffer[0] != '\0' && c != 0)
+	if (buffer[0] != '\0')
 	{
 		i = 0;
 		while (buffer[i] != '\n')
@@ -65,60 +101,6 @@ char	*get_next_line(int fd)
 		}
 		offset_buffer(&buffer);
 	}
-	while (c != 0 && ft_strchr(str, '\n') == -1)
-	{
-		c = read(fd, buffer, BUFFER_SIZE);
-		if (c == 0)
-		{
-			buffer[0] = '\0';
-			str = ft_strcut(str);
-		}
-		buffer[c] = '\0';
-		if (c != 0)
-		{
-			if (!str)
-				str = ft_strdup(buffer);
-			else
-				str = ft_strcatdup(str, buffer);
-		}
-	}
-	return (ft_strcut(str));
+	str = while_loop(fd, str, &buffer);
+	return (str);
 }
-//#include <fcntl.h>
-//#include <stdio.h>
-//int	main(void)
-//{
-//	int fd = open("blank.txt", O_RDONLY);
-//	char	*temp;
-
-//	temp = get_next_line(fd);
-//	printf("1: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("2: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("3: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("4: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("5: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("6: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("7: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("8: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("9: %s", temp);
-//	free(temp);
-//	temp = get_next_line(fd);
-//	printf("10: %s", temp);
-//	free(temp);
-//}
