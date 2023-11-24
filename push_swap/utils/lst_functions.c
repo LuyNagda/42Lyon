@@ -6,11 +6,11 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:12:29 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/20 15:59:06 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/24 16:58:18 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {
@@ -23,7 +23,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*list;
 

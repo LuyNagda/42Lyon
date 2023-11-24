@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 14:11:53 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/20 16:39:30 by lunagda          ###   ########.fr       */
+/*   Created: 2023/11/20 15:50:03 by lunagda           #+#    #+#             */
+/*   Updated: 2023/11/24 16:58:09 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	push_swap(t_list **a)
+int	is_sorted(t_list **head)
 {
-	t_list	*head;
-	int		count;
+	t_list	*temp;
 
-	head = (*a);
-
-	count = ft_lstsize(head);
-	if (is_sorted(a) == -1)
+	temp = (*head);
+	while (temp->next)
 	{
-		
+		if (temp->content > temp->next->content)
+			return (-1);
+		temp = temp->next;
 	}
+	return (0);
 }
