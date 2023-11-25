@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:50:03 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/24 16:58:09 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/25 00:50:02 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	is_sorted(t_list **head)
 	while (temp->next)
 	{
 		if (temp->content > temp->next->content)
-			return (-1);
+			return (0);
 		temp = temp->next;
 	}
-	return (0);
+	return (1);
 }

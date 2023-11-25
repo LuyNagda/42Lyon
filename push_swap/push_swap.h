@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:28:25 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/24 17:01:02 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/25 00:58:00 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <unistd.h>
 
 typedef struct s_list
@@ -37,6 +38,9 @@ int		check_for_errors(int argc, char **argv);
 t_list	*initialize_stack(char **argv);
 int		get_min(t_list **stack_a, int val);
 void	solve_for_3(t_list **stack_a);
+int		get_distance(t_list **stack_a, int content);
+void	solve_for_4(t_list **stack_a, t_list **stack_b);
+void	solve_for_5(t_list **stack_a, t_list **stack_b);
 
 // rule functions
 int		sa(t_list **stack_a);

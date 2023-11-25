@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_for_min.c                                    :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:27:02 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/24 16:56:22 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/25 00:54:21 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,26 @@ int	get_min(t_list **stack_a, int val)
 	min = head->content;
 	while (head->next)
 	{
-		if (head->next->content < min && head->content != val)
-			min = head->next->content;
 		head = head->next;
+		if ((head->content < min) && head->content != val)
+			min = head->content;
 	}
 	return (min);
+}
+
+int	get_distance(t_list **stack_a, int content)
+{
+	t_list	*head;
+	int		distance;
+
+	distance = 0;
+	head = *stack_a;
+	while (head)
+	{
+		if (head->content == content)
+			break ;
+		head = head->next;
+		distance++;
+	}
+	return (distance);
 }
