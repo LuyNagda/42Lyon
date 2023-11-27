@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 11:47:27 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/27 18:10:09 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/27 20:25:13 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ void	solve(t_list **stack_a, t_list **stack_b)
 			pa(stack_a, stack_b);
 		}
 	}
-	while (!is_sorted)
+	while (!is_sorted(stack_a))
 		rra(stack_a);
 }
