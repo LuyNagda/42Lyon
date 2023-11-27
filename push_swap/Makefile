@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+         #
+#    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/25 00:13:57 by luynagda          #+#    #+#              #
-#    Updated: 2023/11/25 00:59:50 by luynagda         ###   ########.fr        #
+#    Updated: 2023/11/27 11:37:30 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,22 +19,20 @@ OBJS = $(SRCS:.c=.o)
 HEADER = push_swap.h
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror -I includes
 
 all: ${NAME}
 
 $(OBJS): $(HEADER)
 
 ${NAME}: ${OBJS}
-	@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 
 clean: 
-	@${RM} ${OBJS}
-	@${RM} ${CHECK_OBJS}
+	${RM} ${OBJS}
 
 fclean: clean
-	@${RM} ${NAME}
-	@${RM} ${CHECK}
+	${RM} ${NAME}
 
 re: fclean all
 
