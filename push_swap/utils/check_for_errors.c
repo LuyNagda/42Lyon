@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:09:40 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/24 16:56:13 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/27 13:01:41 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,16 @@ int	check_for_errors(int argc, char **argv)
 		i = 0;
 		if (argv[argc][0] == '-')
 			i = 1;
+		if (argv[argc][0] == '\0')
+		{
+			write(2, "Error\n", 6);
+			return (-1);
+		}
 		while (argv[argc][i])
 		{
 			if (!ft_strchr("0123456789", argv[argc][i]))
 			{
-				write(1, "Error\n", 6);
+				write(2, "Error\n", 6);
 				return (-1);
 			}
 			i++;
