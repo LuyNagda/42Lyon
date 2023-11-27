@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:27:53 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/24 16:59:24 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/27 17:47:14 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	rotate(t_list **head)
 
 	temp = (*head);
 	(*head) = (*head)->next;
-	temp_head = ft_lstlast((*head));
+	temp_head = ft_lstlast(head);
 	temp_head->next = temp;
 	temp->next = NULL;
 }

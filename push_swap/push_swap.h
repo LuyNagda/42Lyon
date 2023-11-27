@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:28:25 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/25 00:58:00 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:21:59 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_list
 }	t_list;
 
 void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstlast(t_list *lst);
+t_list	*ft_lstlast(t_list **lst);
 t_list	*ft_lstnew(int content);
 void	swap(t_list **h1);
 void	push(t_list **h1, t_list **h2);
@@ -41,6 +41,11 @@ void	solve_for_3(t_list **stack_a);
 int		get_distance(t_list **stack_a, int content);
 void	solve_for_4(t_list **stack_a, t_list **stack_b);
 void	solve_for_5(t_list **stack_a, t_list **stack_b);
+int		get_max(t_list **stack_a, int val);
+void	solve(t_list **stack_a, t_list **stack_b);
+int		get_cheapest(t_list **stack_a, t_list **stack_b);
+int		to_find(t_list **stack_b, int val);
+int		r_to_find(t_list **stack_a, int val);
 
 // rule functions
 int		sa(t_list **stack_a);

@@ -6,21 +6,24 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:12:29 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/24 16:58:18 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/27 14:42:14 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list **lst)
 {
-	if (!lst)
+	t_list	*head;
+
+	head = *lst;
+	if (!head)
 		return (NULL);
-	while (lst->next)
+	while (head->next)
 	{
-		lst = lst->next;
+		head = head->next;
 	}
-	return (lst);
+	return (head);
 }
 
 t_list	*ft_lstnew(int content)
