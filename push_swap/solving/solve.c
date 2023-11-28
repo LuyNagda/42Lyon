@@ -3,19 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 11:47:27 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 17:25:09 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/28 19:56:19 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-//void	solve_part_1(t_list **stack_a, t_list **stack_b)
-//{
+void	sort_stack_b(t_list **stack_b)
+{
+	int	distance;
+	int	r_distance;
 
-//}
+	distance = get_distance(stack_b, get_max(stack_b, -1));
+	r_distance = ft_lstsize(*stack_b) - distance;
+	if (distance < r_distance)
+	{
+		while (distance)
+		{
+			rb(stack_b);
+			distance--;
+		}
+	}
+	else
+	{
+		while (r_distance)
+		{
+			rrb(stack_b);
+			r_distance--;
+		}
+	}
+}
+
+void	sort_push_in_a(t_list **stack_a, t_list **stack_b,
+		int distance, int r_distance)
+{
+	while (ft_lstsize(*stack_b))
+	{
+		distance = get_distance(stack_a,
+				r_to_find(stack_a, (*stack_b)->content));
+		r_distance = ft_lstsize(*stack_a) - distance;
+		if (distance < r_distance)
+		{
+			while (distance)
+			{
+				ra(stack_a);
+				distance--;
+			}
+		}
+		else
+		{
+			while (r_distance)
+			{
+				rra(stack_a);
+				r_distance--;
+			}
+		}
+		pa(stack_a, stack_b);
+	}
+	while (!is_sorted(stack_a))
+		rra(stack_a);
+}
 
 void	solve(t_list **stack_a, t_list **stack_b)
 {
@@ -46,142 +96,15 @@ void	solve(t_list **stack_a, t_list **stack_b)
 			r_distance_b = ft_lstsize(*stack_b) - distance_b;
 		}
 		if ((distance < r_distance) && (distance_b < r_distance_b))
-		{
-			if (distance > distance_b)
-			{
-				distance = distance - distance_b;
-				while (distance_b)
-				{
-					rr(stack_a, stack_b);
-					distance_b--;
-				}
-				while (distance)
-				{
-					ra(stack_a);
-					distance--;
-				}
-				pb(stack_a, stack_b);
-			}
-			else
-			{
-				distance_b = distance_b - distance;
-				while (distance)
-				{
-					rr(stack_a, stack_b);
-					distance--;
-				}
-				while (distance_b)
-				{
-					rb(stack_b);
-					distance_b--;
-				}
-				pb(stack_a, stack_b);
-			}
-		}
+			both_stack_rotate(stack_a, stack_b, distance, distance_b);
 		else if ((distance > r_distance) && (distance_b > r_distance_b))
-		{
-			if (r_distance > r_distance_b)
-			{
-				r_distance = r_distance - r_distance_b;
-				while (r_distance_b)
-				{
-					rrr(stack_a, stack_b);
-					r_distance_b--;
-				}
-				while (r_distance)
-				{
-					rra(stack_a);
-					r_distance--;
-				}
-				pb(stack_a, stack_b);
-			}
-			else
-			{
-				r_distance_b = r_distance_b - r_distance;
-				while (r_distance)
-				{
-					rrr(stack_a, stack_b);
-					r_distance--;
-				}
-				while (r_distance_b)
-				{
-					rrb(stack_b);
-					r_distance_b--;
-				}
-				pb(stack_a, stack_b);
-			}
-		}
+			both_stack_rev_rotate(stack_a, stack_b, r_distance, r_distance_b);
 		else if ((distance > r_distance) && (distance_b < r_distance_b))
-		{
-			while (r_distance)
-			{
-				rra(stack_a);
-				r_distance--;
-			}
-			while (distance_b)
-			{
-				rb(stack_b);
-				distance_b--;
-			}
-			pb(stack_a, stack_b);
-		}
+			both_stack_different_1(stack_a, stack_b, r_distance, distance_b);
 		else
-		{
-			while (distance)
-			{
-				ra(stack_a);
-				distance--;
-			}
-			while (r_distance_b)
-			{
-				rrb(stack_b);
-				r_distance_b--;
-			}
-			pb(stack_a, stack_b);
-		}
+			both_stack_different_2(stack_a, stack_b, distance, r_distance_b);
 	}
 	solve_for_3(stack_a);
-	distance = get_distance(stack_b, get_max(stack_b, -1));
-	r_distance = ft_lstsize(*stack_b) - distance;
-	if (distance < r_distance)
-	{
-		while (distance)
-		{
-			rb(stack_b);
-			distance--;
-		}
-	}
-	else
-	{
-		while (r_distance)
-		{
-			rrb(stack_b);
-			r_distance--;
-		}
-	}
-	while (ft_lstsize(*stack_b))
-	{
-		distance = get_distance(stack_a,
-				r_to_find(stack_a, (*stack_b)->content));
-		r_distance = ft_lstsize(*stack_a) - distance;
-		if (distance < r_distance)
-		{
-			while (distance)
-			{
-				ra(stack_a);
-				distance--;
-			}
-		}
-		else
-		{
-			while (r_distance)
-			{
-				rra(stack_a);
-				r_distance--;
-			}
-		}
-		pa(stack_a, stack_b);
-	}
-	while (!is_sorted(stack_a))
-		rra(stack_a);
+	sort_stack_b(stack_b);
+	sort_push_in_a(stack_a, stack_b, distance, r_distance);
 }
