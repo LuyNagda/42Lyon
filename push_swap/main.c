@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:02:22 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 17:21:01 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/28 20:15:20 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		if (check_for_errors(argc, argv) == -1)
+		if (check_for_errors(argc, argv) == -1
+			|| check_for_duplicates(argv) == -1)
 			return (-1);
 		stack_a = initialize_stack(argv);
 		stack_b = NULL;
@@ -32,6 +33,8 @@ int	main(int argc, char **argv)
 		else
 			solve(&stack_a, &stack_b);
 	}
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 	//while (stack_a)
 	//{
 	//	fflush(stdout);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:12:29 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/27 14:42:14 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/28 20:01:31 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,17 @@ int	ft_lstsize(t_list *lst)
 		count++;
 	}
 	return (count);
+}
+
+void	ft_lstclear(t_list **lst)
+{
+	t_list	*temp;
+
+	while (*lst)
+	{
+		temp = (*lst)->next;
+		free(*lst);
+		(*lst) = temp;
+	}
+	*lst = NULL;
 }
