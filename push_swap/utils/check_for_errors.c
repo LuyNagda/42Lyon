@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:09:40 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 22:20:57 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/11/28 23:45:28 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ int	ft_isnum(char *num)
 
 	i = 0;
 	if (num[0] == '-')
+	{
+		if (num[1] == '\0')
+			return (-1);
 		i++;
+	}
 	while (num[i])
 	{
 		if (!ft_strchr("0123456789", num[i]))
