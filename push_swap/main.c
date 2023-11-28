@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:02:22 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 20:15:20 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/11/28 22:21:43 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc > 1)
 	{
 		if (check_for_errors(argc, argv) == -1
-			|| check_for_duplicates(argv) == -1)
+			|| check_for_duplicates(argc, argv) == -1)
 			return (-1);
-		stack_a = initialize_stack(argv);
+		stack_a = initialize_stack(argc, argv);
 		stack_b = NULL;
 		if (argc == 4)
 			solve_for_3(&stack_a);
@@ -33,8 +35,6 @@ int	main(int argc, char **argv)
 		else
 			solve(&stack_a, &stack_b);
 	}
-	ft_lstclear(&stack_a);
-	ft_lstclear(&stack_b);
 	//while (stack_a)
 	//{
 	//	fflush(stdout);
@@ -48,5 +48,7 @@ int	main(int argc, char **argv)
 	//	printf("%d\n", stack_b->content);
 	//	stack_b = stack_b->next;
 	//}
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 	return (0);
 }

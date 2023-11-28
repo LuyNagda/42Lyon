@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:28:25 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 20:19:31 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/11/28 22:19:54 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void		reverse_rotate(t_list **head);
 int			ft_lstsize(t_list *lst);
 int			is_sorted(t_list **head);
 long int	ft_strict_atoi(const char *str);
+char		*ft_strchr(const char *s, int c);
 int			check_for_errors(int argc, char **argv);
-int			check_for_duplicates(char **argv);
-t_list		*initialize_stack(char **argv);
+int			check_for_duplicates(int argc, char **argv);
+char		**ft_split(char const *s, char c);
+t_list		*initialize_stack(int argc, char **argv);
 int			get_min(t_list **stack_a, int val);
 void		solve_for_3(t_list **stack_a);
 int			get_distance(t_list **stack_a, int content);
