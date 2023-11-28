@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:27:02 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 15:25:35 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/28 17:12:17 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,53 +105,4 @@ int	get_distance(t_list **stack_a, int content)
 	if (!head)
 		return (0);
 	return (distance);
-}
-
-int	get_cheapest(t_list **stack_a, t_list **stack_b)
-{
-	int		count;
-	int		distance;
-	int		r_distance;
-	int		cheapest;
-	int		return_val;
-	t_list	*head;
-
-	return_val = 0;
-	cheapest = 0;
-	distance = 0;
-	r_distance = 0;
-	head = *stack_a;
-	while (head)
-	{
-		count = 0;
-		if (head->content > get_max(stack_b, -1) || head->content < get_min(stack_b, -1))
-		{
-			distance = get_distance(stack_a, get_max(stack_b, 1));
-			r_distance = ft_lstsize(*stack_a) - distance;
-			if (distance < r_distance)
-				count += distance + 1;
-			else
-				count += r_distance + 1;
-		}
-		else
-		{
-			distance = get_distance(stack_b, to_find(stack_b, head->content))
-					+ get_distance(stack_a, to_find(stack_a, head->content));
-			r_distance = (get_distance(stack_b, to_find(stack_b, head->content))
-					+ ft_lstsize(*stack_a)) - distance;
-			if (distance < r_distance)
-				count += distance + 1;
-			else
-				count += r_distance + 1;
-		}
-		if (count < cheapest || cheapest == 0)
-		{
-			cheapest = count;
-			return_val = head->content;
-		}
-		if (cheapest == 1)
-			break ;
-		head = head->next;
-	}
-	return (return_val);
 }

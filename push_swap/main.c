@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:02:22 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/27 18:08:24 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/28 17:21:01 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ int	main(int argc, char **argv)
 		else
 			solve(&stack_a, &stack_b);
 	}
-	while (stack_a)
-	{
-		fflush(stdout);
-		printf("%d\n", stack_a->content);
-		stack_a = stack_a->next;
-	}
-	printf("==================================\n");
-	while (stack_b)
-	{
-		fflush(stdout);
-		printf("%d\n", stack_b->content);
-		stack_b = stack_b->next;
-	}
+	//while (stack_a)
+	//{
+	//	fflush(stdout);
+	//	printf("%d\n", stack_a->content);
+	//	stack_a = stack_a->next;
+	//}
+	//printf("==================================\n");
+	//while (stack_b)
+	//{
+	//	fflush(stdout);
+	//	printf("%d\n", stack_b->content);
+	//	stack_b = stack_b->next;
+	//}
 	return (0);
 }
