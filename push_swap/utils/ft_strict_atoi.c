@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strict_atoi.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:13:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/24 16:17:20 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/11/28 20:18:37 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strict_atoi(const char *str)
+long int	ft_strict_atoi(const char *str)
 {
-	int	i;
-	int	result;
-	int	minus;
+	int			i;
+	long int	result;
+	int			minus;
 
 	i = 0;
 	result = 0;
