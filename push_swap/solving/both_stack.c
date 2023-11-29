@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   both_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:39:41 by luynagda          #+#    #+#             */
-/*   Updated: 2023/11/28 23:38:00 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/11/29 11:40:03 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,5 @@ void	both_stack_rev_rotate(t_list **stack_a, t_list **stack_b,
 		pb(stack_a, stack_b);
 	}
 	else
-		both_stack_rev_rotate_else(stack_a, stack_a, r_distance, r_distance_b);
+		both_stack_rev_rotate_else(stack_a, stack_b, r_distance, r_distance_b);
 }
