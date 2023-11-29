@@ -3,24 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 16:02:00 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 21:46:23 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:57:52 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_free(char **args)
+void	ft_free(int argc, char **args)
 {
 	int	i;
 
 	i = 0;
+	if (argc != 2)
+		return ;
 	while (args[i])
 		i++;
 	while (i >= 0)
 		free(args[i--]);
+	free(args);
 }
 
 t_list	*initialize_stack(int argc, char **argv)
@@ -46,7 +49,6 @@ t_list	*initialize_stack(int argc, char **argv)
 			ft_lstadd_back(&head, ft_lstnew(ft_strict_atoi(args[i])));
 		i++;
 	}
-	if (argc == 2)
-		ft_free(args);
+	ft_free(argc, args);
 	return (head);
 }
