@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:12:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/02 22:33:01 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/02 22:44:39 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,11 @@ int	get_cheapest_count(t_list **stack_a, t_list **stack_b,
 	int	r_distance_b;
 
 	distance = get_distance(stack_a, to_find(stack_a, head->content));
-	distance_b = get_distance(stack_b, to_find(stack_b, head->content));
-	r_distance = ft_lstsize(*stack_a) - distance;
 	if (head->content < get_min(stack_b, -1))
 		distance_b = get_distance(stack_b, get_max(stack_b, -1));
+	else
+		distance_b = get_distance(stack_b, to_find(stack_b, head->content));
+	r_distance = ft_lstsize(*stack_a) - distance;
 	r_distance_b = ft_lstsize(*stack_b) - distance_b;
 	count = get_count(distance, distance_b, r_distance, r_distance_b);
 	return (count);
