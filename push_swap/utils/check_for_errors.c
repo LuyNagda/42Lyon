@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_for_errors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:09:40 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 23:45:28 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:55:33 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	check_for_duplicates(int argc, char **argv)
 		{
 			if (ft_strcmp(args[i], args[j]) == 0)
 			{
+				ft_free(argc, args);
 				write(2, "Error\n", 6);
 				return (-1);
 			}
@@ -77,6 +78,7 @@ int	check_for_duplicates(int argc, char **argv)
 		}
 		i++;
 	}
+	ft_free(argc, args);
 	return (0);
 }
 
@@ -95,10 +97,12 @@ int	check_for_errors(int argc, char **argv)
 		temp = ft_strict_atoi(args[i]);
 		if (ft_isnum(args[i]) == -1 || temp < -2147483648 || temp > 2147483647)
 		{
+			ft_free(argc, args);
 			write(2, "Error\n", 6);
 			return (-1);
 		}
 		i++;
 	}
+	ft_free(argc, args);
 	return (0);
 }

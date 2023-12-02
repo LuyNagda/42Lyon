@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:28:25 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 23:06:20 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/02 12:54:03 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void		both_stack_different_1(t_list **stack_a, t_list **stack_b,
 void		both_stack_different_2(t_list **stack_a, t_list **stack_b,
 				int distance, int r_distance_b);
 void		ft_lstclear(t_list **lst);
+void		ft_free(int argc, char **args);
+
 // rule functions
 int			sa(t_list **stack_a);
 int			sb(t_list **stack_b);
