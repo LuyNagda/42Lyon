@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 11:47:27 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/02 22:45:58 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/03 11:47:26 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	solve_while_loop(t_list **stack_a, t_list **stack_b)
 		distance_b = get_distance(stack_b, get_max(stack_b, -1));
 	else
 		distance_b = get_distance(stack_b, 
-			to_find(stack_b, get_cheapest(stack_a, stack_b)));
+				to_find(stack_b, get_cheapest(stack_a, stack_b)));
 	r_distance_b = ft_lstsize(*stack_b) - distance_b;
 	operation = cheapest_operation(distance, distance_b,
 			r_distance, r_distance_b);

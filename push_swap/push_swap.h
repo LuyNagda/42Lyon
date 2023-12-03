@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:28:25 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/02 23:04:35 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/03 11:47:36 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		both_stack_different_2(t_list **stack_a, t_list **stack_b,
 void		ft_lstclear(t_list **lst);
 void		ft_free(int argc, char **args);
 int			get_biggest(int a, int b);
-int		ft_strcmp(char *s1, char *s2);
+int			ft_strcmp(char *s1, char *s2);
 // rule functions
 int			sa(t_list **stack_a);
 int			sb(t_list **stack_b);

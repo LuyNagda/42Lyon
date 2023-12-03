@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:02:22 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/02 22:33:32 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/03 11:40:46 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int	main(int argc, char **argv)
 			solve_for_5(&stack_a, &stack_b);
 		else if (ft_lstsize(stack_a) > 5)
 			solve(&stack_a, &stack_b);
-		ft_lstclear(&stack_a);
-		ft_lstclear(&stack_b);
+		if (stack_a)
+			ft_lstclear(&stack_a);
+		if (stack_b)
+			ft_lstclear(&stack_b);
 	}
 	return (0);
 }
