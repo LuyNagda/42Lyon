@@ -6,13 +6,13 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:15:03 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/28 21:40:11 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/02 23:21:21 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_strndup(char *src, int start, int stop)
+char	*ft_strnndup(char *src, int start, int stop)
 {
 	char	*trg;
 	int		i;
@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c)
 		start = i;
 		while (!(is_seperator(s[i], c)))
 			i++;
-		tab[j++] = ft_strndup((char *)s, start, i);
+		tab[j++] = ft_strnndup((char *)s, start, i);
 	}
 	tab[j] = 0;
 	return (tab);
