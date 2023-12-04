@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cheapest.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 17:12:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/02 22:44:39 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:21:11 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	get_cheapest(t_list **stack_a, t_list **stack_b)
 		{
 			cheapest = count;
 			return_val = head->content;
+			if (cheapest == 0)
+				return (return_val);
 		}
 		head = head->next;
 	}
