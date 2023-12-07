@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:27:53 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/07 13:25:58 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/07 14:17:24 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,15 @@ void	push(t_list **h1, t_list **h2)
 	temp = (*h2);
 	(*h2) = (*h2)->next;
 	if (!(*h1))
-		return ;
-	temp->next = (*h1);
-	(*h1) = temp;
+	{
+		temp->next = NULL;
+		*h1 = temp;
+	}
+	else
+	{
+		temp->next = (*h1);
+		(*h1) = temp;
+	}
 }
 
 void	rotate(t_list **head)
