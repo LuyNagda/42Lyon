@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:27:53 by lunagda           #+#    #+#             */
-/*   Updated: 2023/11/27 17:47:14 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/07 13:25:58 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	swap(t_list **h1)
 {
 	int	temp;
 
+	if (ft_lstsize(*h1) == 1)
+		return ;
 	temp = (*h1)->content;
 	(*h1)->content = (*h1)->next->content;
 	(*h1)->next->content = temp;
@@ -28,15 +30,9 @@ void	push(t_list **h1, t_list **h2)
 	temp = (*h2);
 	(*h2) = (*h2)->next;
 	if (!(*h1))
-	{
-		temp->next = NULL;
-		*h1 = temp;
-	}
-	else
-	{
-		temp->next = (*h1);
-		(*h1) = temp;
-	}
+		return ;
+	temp->next = (*h1);
+	(*h1) = temp;
 }
 
 void	rotate(t_list **head)
@@ -44,6 +40,8 @@ void	rotate(t_list **head)
 	t_list	*temp;
 	t_list	*temp_head;
 
+	if (ft_lstsize(*head) == 1)
+		return ;
 	temp = (*head);
 	(*head) = (*head)->next;
 	temp_head = ft_lstlast(head);
@@ -56,6 +54,8 @@ void	reverse_rotate(t_list **head)
 	t_list	*temp;
 	t_list	*temp_head;
 
+	if (ft_lstsize(*head) == 1)
+		return ;
 	temp_head = (*head);
 	while (temp_head->next->next)
 		temp_head = temp_head->next;
