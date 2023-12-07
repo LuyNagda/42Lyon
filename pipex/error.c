@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_piped_commands.c                               :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 16:55:25 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/04 17:02:09 by lunagda          ###   ########.fr       */
+/*   Created: 2023/12/07 12:16:20 by lunagda           #+#    #+#             */
+/*   Updated: 2023/12/07 16:52:50 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pipex.h"
+#include "pipex.h"
 
-char	**get_piped_commands(char *cmd1, char *cmd2)
+void	msg(char *err)
 {
-	char	**shell_command;
+	write(2, err, ft_strlen(err));
+	write(2, "\n", 1);
+	exit(EXIT_FAILURE);
+}
 
-	shell_command = (char **)malloc(4 * sizeof(char *));
-	shell_command[0] = ft_strdup("/bin/sh");
-	shell_command[1] = ft_strdup("-c");
-	shell_command[2] = ft_strjoin(ft_strjoin(cmd1, " | "), cmd2);
-	shell_command[3] = 0;
-	return (shell_command);
+void	error_msg(char *err)
+{
+	perror(err);
+	exit(EXIT_FAILURE);
 }

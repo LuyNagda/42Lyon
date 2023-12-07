@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/05 16:21:30 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:53:29 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	child_one(int f1, char **cmd1, char **env, int	end[2])
 	char	**paths;
 	char	*path;
 
-	if (f1 == -1)
-		exit(EXIT_FAILURE);
 	if (dup2(f1, STDIN_FILENO) == -1)
 		exit(EXIT_FAILURE);
 	if (dup2(end[1], STDOUT_FILENO) == -1)
@@ -27,6 +25,8 @@ void	child_one(int f1, char **cmd1, char **env, int	end[2])
 	close(f1);
 	paths = parsing_for_path(env);
 	path = get_path(paths, cmd1);
+	if (path == NULL)
+		exit(EXIT_FAILURE);
 	if (execve(path, cmd1, paths) == -1)
 		perror(cmd1[0]);
 	ft_free(cmd1);
@@ -38,10 +38,9 @@ void	child_two(int f2, char **cmd2, char **env, int end[2])
 {
 	char	**paths;
 	char	*path;
+	int		status;
 
-	if (f2 == -1)
-		exit(EXIT_FAILURE);
-	waitpid(-1, NULL, 0);
+	waitpid(-1, &status, 0);
 	if (dup2(f2, STDOUT_FILENO) == -1)
 		exit(EXIT_FAILURE);
 	if (dup2(end[0], STDIN_FILENO) == -1)
@@ -50,6 +49,8 @@ void	child_two(int f2, char **cmd2, char **env, int end[2])
 	close(f2);
 	paths = parsing_for_path(env);
 	path = get_path(paths, cmd2);
+	if (path == NULL)
+		exit(WEXITSTATUS(status));
 	if (execve(path, cmd2, paths) == -1)
 		perror(cmd2[0]);
 	ft_free(cmd2);
@@ -66,23 +67,20 @@ void	pipex(int f1, int f2, char **argv, char **env)
 	pid_t	child2;
 
 	if (pipe(end) == -1)
-	{
-		perror("pipe");
-		exit(EXIT_FAILURE);
-	}
+		error_msg("pipe");
 	child1 = fork();
 	if (child1 < 0)
-		return (perror("Fork: "));
+		error_msg("Fork: ");
 	if (child1 == 0)
 		child_one(f1, ft_split(argv[2], ' '), env, end);
 	child2 = fork();
 	if (child2 < 0)
-		return (perror("Fork: "));
+		error_msg("Fork: ");
 	if (child2 == 0)
 		child_two(f2, ft_split(argv[3], ' '), env, end);
 	close(end[0]);
 	close(end[1]);
 	waitpid(child1, &status, 0);
 	waitpid(child2, &status, 0);
-	exit(EXIT_SUCCESS);
+	exit(WEXITSTATUS(status));
 }

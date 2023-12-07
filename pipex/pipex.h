@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:35:30 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/05 12:57:08 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:52:47 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int		access_input_file(char *file1);
 int		access_output_file(char *file2);
 char	**get_piped_commands(char *cmd1, char *cmd2);
 void	pipex(int f1, int f2, char **argv, char **env);
+void	msg(char *err);
+void	error_msg(char *err);
 
 #endif

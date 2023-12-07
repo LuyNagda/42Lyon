@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 15:38:19 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/05 15:07:47 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:51:26 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ char	*get_path(char **paths, char **cmd)
 	int	i;
 
 	i = 0;
+	if (access(cmd[0], F_OK) == 0 && access(cmd[0], X_OK) == 0)
+	{
+		ft_free(paths);
+		return (cmd[0]);
+	}
 	while (paths[i])
 	{
 		paths[i] = ft_strjoin(paths[i], "/");
@@ -26,5 +31,6 @@ char	*get_path(char **paths, char **cmd)
 		i++;
 	}
 	ft_free(paths);
-	return (ft_strdup(cmd[0]));
+	msg(ft_strjoin("command not found: ", cmd[0]));
+	return (NULL);
 }
