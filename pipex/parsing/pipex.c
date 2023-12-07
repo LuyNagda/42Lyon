@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/07 17:53:29 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:07:21 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	child_two(int f2, char **cmd2, char **env, int end[2])
 	paths = parsing_for_path(env);
 	path = get_path(paths, cmd2);
 	if (path == NULL)
+	{
+		ft_free(paths);
 		exit(WEXITSTATUS(status));
+	}
 	if (execve(path, cmd2, paths) == -1)
 		perror(cmd2[0]);
 	ft_free(cmd2);

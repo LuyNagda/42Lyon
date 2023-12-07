@@ -6,7 +6,7 @@
 #    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 13:52:39 by lunagda           #+#    #+#              #
-#    Updated: 2023/12/07 17:54:16 by lunagda          ###   ########.fr        #
+#    Updated: 2023/12/07 18:01:23 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS	=	$(SRCS:.c=.o)
 HEADER	=	pipex.h
 
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I includes
+CFLAGS	=	-Wall -Wextra -Werror -I includes -fsanitize=address -g3
 
 all: ${NAME}
 
