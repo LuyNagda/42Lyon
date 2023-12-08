@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:50:33 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 16:01:21 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/08 16:37:52 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,25 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	int	f1;
-	int	f2;
+	t_pipex	vars;
 
 	if (argc != 5)
+	{
 		msg("There are less arguments than expected.");
-	f1 = open(argv[1], O_RDONLY);
-	f2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (f1 < 0)
+		exit(EXIT_FAILURE);
+	}
+	vars.f1 = open(argv[1], O_RDONLY);
+	vars.f2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (vars.f1 < 0)
 		perror(argv[1]);
-	if (f2 < 0)
+	if (vars.f2 < 0)
 		error_msg(argv[4]);
-	pipex(f1, f2, argv, env);
+	vars.paths = parsing_for_path(env);
+	vars.cmd1 = ft_split(argv[2], ' ');
+	vars.cmd2 = ft_split(argv[3], ' ');
+	vars.path1 = get_path(vars.paths, vars.cmd1);
+	vars.path2 = get_path(vars.paths, vars.cmd2);
+	ft_free(vars.paths);
+	pipex(vars);
 	return (0);
 }

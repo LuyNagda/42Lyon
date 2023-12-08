@@ -1,13 +1,1 @@
-Makefile
-error.c
-error.o
-files
-input
-main.c
-main.o
-output
-parsing
-pipex
-pipex.h
-utils
-youpi
+      0       0       0
