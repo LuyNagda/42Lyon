@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:50:33 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 16:37:52 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:25:45 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ int	main(int argc, char **argv, char **env)
 	vars.f1 = open(argv[1], O_RDONLY);
 	vars.f2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (vars.f1 < 0)
-		perror(argv[1]);
+		joint_error_msg(argv[1]);
 	if (vars.f2 < 0)
-		error_msg(argv[4]);
+	{
+		joint_error_msg(argv[4]);
+		exit(EXIT_FAILURE);
+	}
 	vars.paths = parsing_for_path(env);
 	vars.cmd1 = ft_split(argv[2], ' ');
 	vars.cmd2 = ft_split(argv[3], ' ');

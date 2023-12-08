@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:35:30 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 16:32:25 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:23:57 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h> 
 # include <stdio.h>
+# include <string.h>
 # include <sys/wait.h>
 
 typedef struct	s_pipex
@@ -50,7 +51,9 @@ int		access_input_file(char *file1);
 int		access_output_file(char *file2);
 void	pipex(t_pipex vars);
 void	msg(char *err);
-void	error_msg(char *err);
+void	error_msg(char *err, t_pipex vars);
 void	free_stuff(char **cmd1, char **cmd2, char *path1, char *path2);
+char	*ft_strjoin_free(char const *s1, char const *s2);
+void	joint_error_msg(char *err);
 
 #endif
