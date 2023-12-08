@@ -6,13 +6,13 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 13:13:05 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/08 16:01:41 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	child_one(int f1, char **cmd1, char **paths, int	end[2])
+void	child_one(int f1, char **cmd1, char **paths, int end[2])
 {
 	char	*path;
 

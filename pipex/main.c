@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:50:33 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/07 17:55:00 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/08 16:01:21 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv, char **env)
 {
 	int	f1;
-	int f2;
+	int	f2;
 
 	if (argc != 5)
 		msg("There are less arguments than expected.");
