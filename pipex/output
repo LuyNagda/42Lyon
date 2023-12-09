@@ -1,12 +1,24 @@
-Makefile
-error.c
-error.o
-files
-input
-main.c
-main.o
-output
-parsing
-pipex
-pipex.h
-utils
+total 420
+-rw-r--r-- 1 lunagda 2023_lyon   1369 Dec  9 16:45 Makefile
+-rw-r--r-- 1 lunagda 2023_lyon   1305 Dec  9 14:16 error.c
+-rw-r--r-- 1 lunagda 2023_lyon 139680 Dec  9 16:45 error.o
+-rwxr-xr-x 1 lunagda 2023_lyon     34 Dec  8 13:09 input
+-rw-r--r-- 1 lunagda 2023_lyon   1852 Dec  9 16:26 main.c
+-rw-r--r-- 1 lunagda 2023_lyon 140424 Dec  9 16:45 main.o
+-rw-r--r-- 1 lunagda 2023_lyon      0 Dec  9 16:45 output
+drwxr-xr-x 2 lunagda 2023_lyon    124 Dec  9 16:45 parsing
+-rwxr-xr-x 1 lunagda 2023_lyon 121696 Dec  9 16:45 pipex
+-rw-r--r-- 1 lunagda 2023_lyon   2042 Dec  9 16:08 pipex.h
+drwxr-xr-x 2 lunagda 2023_lyon    194 Dec  9 16:45 utils
+total 424
+-rw-r--r-- 1 lunagda 2023_lyon   1369 Dec  9 16:45 Makefile
+-rw-r--r-- 1 lunagda 2023_lyon   1305 Dec  9 14:16 error.c
+-rw-r--r-- 1 lunagda 2023_lyon 139680 Dec  9 16:45 error.o
+-rwxr-xr-x 1 lunagda 2023_lyon     34 Dec  8 13:09 input
+-rw-r--r-- 1 lunagda 2023_lyon   1852 Dec  9 16:26 main.c
+-rw-r--r-- 1 lunagda 2023_lyon 140424 Dec  9 16:45 main.o
+-rw-r--r-- 1 lunagda 2023_lyon    651 Dec  9 16:45 output
+drwxr-xr-x 2 lunagda 2023_lyon    124 Dec  9 16:45 parsing
+-rwxr-xr-x 1 lunagda 2023_lyon 121696 Dec  9 16:45 pipex
+-rw-r--r-- 1 lunagda 2023_lyon   2042 Dec  9 16:08 pipex.h
+drwxr-xr-x 2 lunagda 2023_lyon    194 Dec  9 16:45 utils
