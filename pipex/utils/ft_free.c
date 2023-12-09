@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 14:15:06 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 16:46:35 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/09 16:08:28 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,23 @@ void	ft_free(char **args)
 }
 
 
-void	free_stuff(char **cmd1, char **cmd2, char *path1, char *path2)
+void	free_stuff(char **commands, char **command,
+		char **paths, char *path)
 {
-	if (cmd1)
-		ft_free(cmd1);
-	if (cmd2)
-		ft_free(cmd2);
-	if (path1)
-		free(path1);
-	if (path2)
-		free(path2);
+	if (commands)
+		ft_free(commands);
+	if (command)
+		ft_free(command);
+	if (paths)
+		ft_free(paths);
+	if (path)
+		free(path);
+}
+
+void	free_command_path(char **command, char *path)
+{
+	if (command)
+		ft_free(command);
+	if (path)
+		free(path);
 }

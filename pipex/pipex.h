@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:35:30 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 17:23:57 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/09 16:08:37 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ typedef struct	s_pipex
 {
 	int 	f1;
 	int		f2;
+	int		argc;
+	char	**argv;
 	char	**paths;
-	char	*path1;
-	char	*path2;
-	char	**cmd1;
-	char	**cmd2;
-	int		end[2];
+	char	*path;
+	char	**commands;
+	char	**command;
+	int		pipe[2];
+	int		old_pipe[2];
 	int		status;
-	int		child1;
-	int		child2;
+	int		child;
+	int		i;
 }	t_pipex;
 
 char	*ft_strdup(const char *src);
@@ -52,8 +54,9 @@ int		access_output_file(char *file2);
 void	pipex(t_pipex vars);
 void	msg(char *err);
 void	error_msg(char *err, t_pipex vars);
-void	free_stuff(char **cmd1, char **cmd2, char *path1, char *path2);
+void	free_stuff(char **commands, char **command, char **paths, char *path);
 char	*ft_strjoin_free(char const *s1, char const *s2);
 void	joint_error_msg(char *err);
+void	free_command_path(char **command, char *path);
 
 #endif

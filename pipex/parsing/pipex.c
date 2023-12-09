@@ -6,67 +6,93 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 17:23:12 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/09 16:08:53 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	child_one(int f1, char **cmd1, char *path, int end[2])
+int	first_child(t_pipex vars, int pipe[2])
 {
-	if (dup2(f1, STDIN_FILENO) == -1)
+	if (dup2(vars.f1, STDIN_FILENO) == -1)
 		return (EXIT_FAILURE);
-	if (dup2(end[1], STDOUT_FILENO) == -1)
+	if (dup2(pipe[1], STDOUT_FILENO) == -1)
 		return (EXIT_FAILURE);
-	close(end[0]);
-	close(f1);
-	if (path == NULL)
+	close(pipe[0]);
+	close(vars.f1);
+	if (vars.path == NULL)
+	{
+		free_stuff(vars.commands, vars.command, vars.paths, vars.path);
 		return (EXIT_FAILURE);
-	if (execve(path, cmd1, 0) == -1)
-		joint_error_msg(cmd1[0]);
-	ft_free(cmd1);
-	free(path);
+	}
+	if (execve(vars.path, vars.command, 0) == -1)
+		joint_error_msg(vars.command[0]);
+	free_stuff(vars.commands, vars.command, vars.paths, vars.path);
 	return (EXIT_FAILURE);
 }
 
-int	child_two(int f2, char **cmd2, char *path, int end[2])
+int	child_n(t_pipex vars, int pipe[2], int old_pipe[2])
 {
-	int		status;
+	if (dup2(old_pipe[0], STDIN_FILENO) == -1)
+		return (EXIT_FAILURE);
+	if (dup2(pipe[1], STDOUT_FILENO) == -1)
+		return (EXIT_FAILURE);
+	close(old_pipe[0]);
+	close(pipe[0]);
+	close(pipe[1]);
+	if (vars.path == NULL)
+		return (EXIT_FAILURE);
+	if (execve(vars.path, vars.command, 0) == -1)
+		joint_error_msg(vars.command[0]);
+	free_stuff(vars.commands, vars.command, vars.paths, vars.path);
+	return (EXIT_FAILURE);
+}
 
-	waitpid(-1, &status, 0);
-	if (dup2(f2, STDOUT_FILENO) == -1)
-		return (EXIT_FAILURE);
-	if (dup2(end[0], STDIN_FILENO) == -1)
-		return (EXIT_FAILURE);
-	close(end[1]);
-	close(f2);
-	if (path == NULL)
-		return (status);
-	if (execve(path, cmd2, 0) == -1)
-		joint_error_msg(cmd2[0]);
-	ft_free(cmd2);
-	free(path);
-	return (status);
+int	last_child(t_pipex vars, int old_pipe[2], int pipe[2])
+{
+	if (dup2(old_pipe[0], STDIN_FILENO) == -1)
+		error_msg("Dup", vars);
+	if (dup2(vars.f2, STDOUT_FILENO) == -1)
+		error_msg("Dup", vars);
+	close(old_pipe[0]);
+	close(pipe[0]);
+	close(vars.f2);
+	if (vars.path == NULL)
+	{
+		free_stuff(vars.commands, vars.command, vars.paths, vars.path);
+		exit(EXIT_FAILURE);
+	}
+	if (execve(vars.path, vars.command, 0) == -1)
+		joint_error_msg(vars.command[0]);
+	free_stuff(vars.commands, vars.command, vars.paths, vars.path);
+	exit(EXIT_FAILURE);
 }
 
 void	pipex(t_pipex vars)
 {
-	if (pipe(vars.end) == -1)
-		error_msg("Pipe", vars);
-	vars.child1 = fork();
-	if (vars.child1 < 0)	
-		error_msg("Fork", vars);
-	if (vars.child1 == 0)
-		child_one(vars.f1, vars.cmd1, vars.path1, vars.end);
-	vars.child2 = fork();
-	if (vars.child2 < 0)
-		error_msg("Fork", vars);
-	if (vars.child2 == 0)
-		vars.status = child_two(vars.f2, vars.cmd2, vars.path2, vars.end);
-	close(vars.end[0]);
-	close(vars.end[1]);
-	waitpid(vars.child1, &vars.status, 0);
-	waitpid(vars.child2, &vars.status, 0);
-	free_stuff(vars.cmd1, vars.cmd2, vars.path1, vars.path2);
-	exit(WEXITSTATUS(vars.status));
+	int		i;
+	int		old_pipe[2];
+
+	i = 0;
+	while (vars.commands[i])
+	{
+		if (pipe(vars.pipe) == -1)
+			error_msg("Pipe", vars);
+		vars.command = ft_split(vars.commands[i], ' ');
+		vars.path = get_path(vars.paths, vars.command);
+		vars.child = fork();
+		if (vars.child < 0)
+			error_msg("Fork", vars);
+		if (i == 0 && vars.child == 0)
+			first_child(vars, vars.pipe);
+		else if (i < (vars.argc - 4) && vars.child == 0)
+			child_n(vars, vars.pipe, old_pipe);
+		else if (i == (vars.argc - 4) && vars.child == 0)
+			last_child(vars, old_pipe, vars.pipe);
+		close(vars.pipe[1]);
+		old_pipe[0] = vars.pipe[0];
+		waitpid(vars.child, &vars.status, 0);
+		i++;
+		free_command_path(vars.command, vars.path);
+	}
 }

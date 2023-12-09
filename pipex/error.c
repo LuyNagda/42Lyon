@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:16:20 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/08 17:22:49 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/09 14:16:01 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	msg(char *err)
 
 void	error_msg(char *err, t_pipex vars)
 {
-	free_stuff(vars.cmd1, vars.cmd2, vars.path1, vars.path2);
+	free_stuff(vars.commands, vars.command, vars.paths, vars.path);
 	perror(err);
 	exit(EXIT_FAILURE);
 }
