@@ -6,41 +6,41 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/11 14:25:51 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/11 17:47:33 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	first_child(t_pipex vars, int pipe[2])
+void	first_child(t_pipex vars, int pipe[2])
 {
 	if (dup2(vars.f1, STDIN_FILENO) == -1)
-		return (EXIT_FAILURE);
+		error_msg("Dup", vars);
 	if (dup2(pipe[1], STDOUT_FILENO) == -1)
-		return (EXIT_FAILURE);
+		error_msg("Dup", vars);
 	close(pipe[0]);
 	close(vars.f1);
 	if (vars.path == NULL)
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	if (execve(vars.path, vars.command, 0) == -1)
 		joint_error_msg(vars.command[0]);
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
-int	child_n(t_pipex vars, int pipe[2], int old_pipe[2])
+void	child_n(t_pipex vars, int pipe[2], int old_pipe[2])
 {
 	if (dup2(old_pipe[0], STDIN_FILENO) == -1)
-		return (EXIT_FAILURE);
+		error_msg("Dup", vars);
 	if (dup2(pipe[1], STDOUT_FILENO) == -1)
-		return (EXIT_FAILURE);
+		error_msg("Dup", vars);
 	close(old_pipe[0]);
 	close(pipe[0]);
 	close(pipe[1]);
 	if (vars.path == NULL)
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	if (execve(vars.path, vars.command, 0) == -1)
 		joint_error_msg(vars.command[0]);
-	return (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 int	last_child(t_pipex vars, int old_pipe[2], int pipe[2])
