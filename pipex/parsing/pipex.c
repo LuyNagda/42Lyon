@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/09 16:08:53 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/11 14:25:51 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,9 @@ int	first_child(t_pipex vars, int pipe[2])
 	close(pipe[0]);
 	close(vars.f1);
 	if (vars.path == NULL)
-	{
-		free_stuff(vars.commands, vars.command, vars.paths, vars.path);
 		return (EXIT_FAILURE);
-	}
 	if (execve(vars.path, vars.command, 0) == -1)
 		joint_error_msg(vars.command[0]);
-	free_stuff(vars.commands, vars.command, vars.paths, vars.path);
 	return (EXIT_FAILURE);
 }
 
@@ -44,7 +40,6 @@ int	child_n(t_pipex vars, int pipe[2], int old_pipe[2])
 		return (EXIT_FAILURE);
 	if (execve(vars.path, vars.command, 0) == -1)
 		joint_error_msg(vars.command[0]);
-	free_stuff(vars.commands, vars.command, vars.paths, vars.path);
 	return (EXIT_FAILURE);
 }
 

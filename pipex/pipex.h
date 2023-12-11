@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:35:30 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/09 16:08:37 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:59:06 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define PIPEX_H
 
+# include "utils/get_next_line.h"
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -24,9 +25,9 @@
 # include <string.h>
 # include <sys/wait.h>
 
-typedef struct	s_pipex
+typedef struct s_pipex
 {
-	int 	f1;
+	int		f1;
 	int		f2;
 	int		argc;
 	char	**argv;
@@ -58,5 +59,6 @@ void	free_stuff(char **commands, char **command, char **paths, char *path);
 char	*ft_strjoin_free(char const *s1, char const *s2);
 void	joint_error_msg(char *err);
 void	free_command_path(char **command, char *path);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

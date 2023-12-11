@@ -1,47 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 14:15:06 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/11 16:59:16 by lunagda          ###   ########.fr       */
+/*   Created: 2023/11/06 15:33:07 by luynagda          #+#    #+#             */
+/*   Updated: 2023/12/11 13:36:09 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	ft_free(char **args)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (args[i])
-	{
-		free(args[i]);
+	while (s1[i] == s2[i] && s1[i] && s2[i])
 		i++;
-	}
-	free(args);
-}
-
-void	free_stuff(char **commands, char **command,
-		char **paths, char *path)
-{
-	if (commands)
-		ft_free(commands);
-	if (command)
-		ft_free(command);
-	if (paths)
-		ft_free(paths);
-	if (path)
-		free(path);
-}
-
-void	free_command_path(char **command, char *path)
-{
-	if (command)
-		ft_free(command);
-	if (path)
-		free(path);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
