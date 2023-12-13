@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
+#    By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 13:04:08 by lunagda           #+#    #+#              #
-#    Updated: 2023/12/13 16:30:50 by lunagda          ###   ########.fr        #
+#    Updated: 2023/12/13 20:21:06 by luynagda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,8 @@ C_FILE		=	main.c				\
 				ft_utils.c			\
 				ft_init_map.c		\
 				ft_check_map.c		\
-				#map_checker.c		\
-				render.c			\
-				render_mouv.c		\
-				set.c				\
-				texture.c			\
-				utils.c				\
+				ft_init_mlx.c		\
+				ft_render_map.c
 
 SRC_DIR		=	./src/
 

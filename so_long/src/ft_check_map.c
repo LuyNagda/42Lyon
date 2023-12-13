@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:56:00 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/13 17:39:59 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:17:24 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	ft_init_vars(t_data *data)
-{
-	data->map.coins = 0;
-	data->map.players = 0;
-	data->map.exit = 0;
-	data->movements = 0;
-	data->map.columns = ft_strlen(data->map.full[0]) - 1;
-	data->player_sprite = RIGHT;
-}
 
 void	ft_check_walls(t_data *data)
 {

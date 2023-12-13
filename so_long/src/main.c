@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:42:50 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/13 17:25:40 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:17:03 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	handle_no_event(void *data)
 	return (0);
 }
 
-int	handle_keypress(int keysym, t_data *data)
+int	ft_handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 		mlx_destroy_window(data->mlx, data->win);
@@ -53,4 +53,11 @@ int	main(int argc, char **argv)
 	ft_init_map(data, argv);
 	ft_init_vars(data);
 	ft_check_map(data);
+	ft_init_mlx(data);
+	ft_init_sprites(data);
+	ft_render_map(data);
+	mlx_hook(data->win, KeyPress, KeyPressMask, ft_handle_keypress, data);
+	mlx_hook(data->win, DestroyNotify, ButtonPressMask, ft_close, data);
+	mlx_hook(game->win_ptr, Expose, ExposureMask, ft_render_map, game);
+	mlx_loop(game->mlx_ptr);
 }
