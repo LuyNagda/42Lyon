@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+         #
+#    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 13:04:08 by lunagda           #+#    #+#              #
-#    Updated: 2023/12/13 20:21:06 by luynagda         ###   ########.fr        #
+#    Updated: 2023/12/15 14:23:14 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ C_FILE		=	main.c				\
 				ft_init_map.c		\
 				ft_check_map.c		\
 				ft_init_mlx.c		\
-				ft_render_map.c
+				ft_render_map.c		\
+				ft_close.c			\
+				ft_handle_keypress.c
 
 SRC_DIR		=	./src/
 
@@ -64,7 +66,7 @@ mlx:
 
 $(NAME): lib mlx $(OBJ)
 	@echo "\033[0;33m\nCOMPILING SO_LONG...\n"
-	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME)
+	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -g3 -o $(NAME)
 	@echo "\033[1;32m./so_long created\n"
 
 clean:

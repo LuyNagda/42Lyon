@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_render_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:55:24 by luynagda          #+#    #+#             */
-/*   Updated: 2023/12/13 20:17:14 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/15 13:23:29 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_identify_sprite(t_data *data, int y, int x)
 	
 	parameter = data->map.full[y][x];
 	if (parameter == WALL)
-		ft_render_sprite(data, data->walls, y, x);
+		ft_render_sprite(data, data->wall, y, x);
 	else if (parameter == FLOOR)
 		ft_render_sprite(data, data->floor, y, x);
 	else if (parameter == COINS)
@@ -60,7 +60,7 @@ void	ft_identify_sprite(t_data *data, int y, int x)
 		else
 			ft_render_sprite(data, data->closed_exit, y, x);
 	}
-	else if (parameter = PLAYER)
+	else if (parameter == PLAYER)
 		ft_render_player(data, y, x);
 }
 

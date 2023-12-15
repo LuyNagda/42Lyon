@@ -3,24 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:38:57 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/13 20:17:08 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:04:57 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_error_msg(char *msg)
+void	ft_error_msg(char *msg, t_data *data)
 {
-	ft_putstr_fd(msg, 2);
-	exit(EXIT_FAILURE);
-}
-
-void	ft_error_msg_free_map(char *msg, char *map)
-{
-	free(map);
+	free(data);
 	ft_putstr_fd(msg, 2);
 	exit(EXIT_FAILURE);
 }

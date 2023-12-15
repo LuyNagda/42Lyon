@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:43:08 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/13 20:19:03 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:46:56 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define WALL				'1'
 # define FLOOR				'0'
-# define COIN				'C'
+# define COINS				'C'
 # define EXIT				'E'
 # define PLAYER				'P'
 
@@ -93,7 +93,7 @@ typedef struct s_data
 	t_map		map;
 }	t_data;
 
-void	ft_check_command_line_arguments(int argc, char **argv);
+void	ft_check_command_line_arguments(int argc, char **argv, t_data *data);
 char	*ft_strappend(char	**s1, char *s2);
 void	ft_init_map(t_data *data, char **argv);
 void	ft_init_vars(t_data *data);
@@ -101,8 +101,11 @@ void	ft_check_map(t_data *data);
 void	ft_init_mlx(t_data *data);
 void	ft_init_sprites(t_data *data);
 int		ft_render_map(t_data *data);
-
-void	ft_error_msg_free_map(char *msg, char *map);
-void	ft_error_msg(char *msg);
+int		ft_handle_keypress(int keysym, t_data *data);
+int		ft_close(t_data *data);
+void	ft_error_msg(char *msg, t_data *data);
+void	ft_free(char **s);
+void	free_all_stuff(t_data *data);
+void	ft_free_map(t_data *data);
 
 #endif

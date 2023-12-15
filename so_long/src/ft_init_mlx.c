@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:28:27 by luynagda          #+#    #+#             */
-/*   Updated: 2023/12/13 20:17:19 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/15 14:54:15 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,23 @@ void	ft_init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
-		ft_error_msg("Couldn't allocate mlx pointer.\n");
+		ft_error_msg("Couldn't allocate mlx pointer.\n", data);
 	data->win = mlx_new_window(data->mlx, data->map.columns * IMG_WIDTH, data->map.rows * IMG_HEIGHT, "so_long");
 	if (data->win == NULL)
 	{
 		free(data->mlx);
-		ft_error_msg("Couldn't create the window.\n");
+		ft_error_msg("Couldn't create the window.\n", data);
 	}
 }
 
-t_image	ft_init_sprites(void *mlx, char *path, t_data *data)
+t_image	ft_new_sprite(void *mlx, char *path, t_data *data)
 {
 	t_image	sprite;
 	
+	(void)data;
 	sprite.xpm = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
-	if (spirte.xpm == NULL)
-		ft_error_msg("Couldn't find a sprite.")
+	if (sprite.xpm == NULL)
+		ft_error_msg("Couldn't find a sprite.", data);
 	return (sprite);
 }
 
@@ -50,7 +51,7 @@ void	ft_init_sprites(t_data *data)
 	void *mlx;
 
 	mlx = data->mlx;
-	data->walls = ft_new_sprite(mlx, WALL_XPM, data);
+	data->wall = ft_new_sprite(mlx, WALL_XPM, data);
 	data->floor = ft_new_sprite(mlx, FLOOR_XPM, data);
 	data->coins = ft_new_sprite(mlx, COIN_XPM, data);
 	data->player_front = ft_new_sprite(mlx, PLAYER_FRONT_XPM, data);
