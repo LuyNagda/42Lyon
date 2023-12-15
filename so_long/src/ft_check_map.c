@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:56:00 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 15:20:10 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:38:28 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ void	ft_count_map_parameters(t_data *data)
 		x = 0;
 		while (data->map.full[y][x])
 		{
-			if (data->map.full[y][x] == 'P')
+			if (data->map.full[y][x] == PLAYER)
 			{
 				data->map.players++;
 				data->map.player.x = x;
 				data->map.player.y = y;
 			}
-			if (data->map.full[y][x] == 'E')
+			if (data->map.full[y][x] == EXIT)
 				data->map.exit++;
-			if (data->map.full[y][x] == 'C')
+			if (data->map.full[y][x] == COINS)
 				data->map.coins++;
 			x++;
 		}

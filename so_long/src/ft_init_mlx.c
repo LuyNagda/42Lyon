@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:28:27 by luynagda          #+#    #+#             */
-/*   Updated: 2023/12/15 15:22:21 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:42:11 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_image	ft_new_sprite(void *mlx, char *path, t_data *data)
 {
 	t_image	sprite;
 
-	(void)data;
 	sprite.xpm = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
 	if (sprite.xpm == NULL)
 		ft_error_msg("Couldn't find a sprite.", data);

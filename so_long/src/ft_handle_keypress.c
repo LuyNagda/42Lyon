@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:37:04 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 15:21:02 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:39:30 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_victory(t_data *data)
 {
-	ft_putstr_fd("\n			Movements: ", 2);
+	ft_putstr_fd("\n			Movements: ", 1);
 	ft_putnbr_fd(++data->movements, 1);
 	ft_putchar_fd('\n', 1);
 	free_all_stuff(data);

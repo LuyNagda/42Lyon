@@ -6,16 +6,13 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:43:08 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 14:46:56 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:34:08 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 
 # define SO_LONG_H
-
-# define WINDOW_WIDTH		600
-# define WINDOW_HEIGHT		300
 
 # define FRONT				1
 # define LEFT				2
