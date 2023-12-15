@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:37:09 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 15:05:02 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:21:38 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	ft_check_command_line_arguments(int argc, char **argv, t_data *data)
 {
 	if (argc > 2)
-		ft_error_msg("Too many arguments. Just send a path to the map.\n", data);
+		ft_error_msg("Too many arguments. \
+		Just send a path to the map.\n", data);
 	if (argc < 2)
 		ft_error_msg("Too less arguments. Send a path to the map.\n", data);
 	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
@@ -39,10 +40,12 @@ void	ft_check_for_empty_lines(char *map, t_data *data)
 	}
 	while (map[i + 2])
 	{
-		if ((map[i] == '\n' || map[i] == '\r') && (map[i + 2] == '\n' || map[i + 2] == '\r'))
+		if ((map[i] == '\n' || map[i] == '\r') && \
+		(map[i + 2] == '\n' || map[i + 2] == '\r'))
 		{
 			free(map);
-			ft_error_msg("Invalid map. Map has a empty line in the middle.\n", data);
+			ft_error_msg("Invalid map. \
+			Map has a empty line in the middle.\n", data);
 		}
 		i++;
 	}

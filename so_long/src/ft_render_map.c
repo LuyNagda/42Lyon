@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:55:24 by luynagda          #+#    #+#             */
-/*   Updated: 2023/12/15 13:23:29 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:23:13 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_print_movements(t_data *data)
 void	ft_identify_sprite(t_data *data, int y, int x)
 {
 	char	parameter;
-	
+
 	parameter = data->map.full[y][x];
 	if (parameter == WALL)
 		ft_render_sprite(data, data->wall, y, x);
@@ -75,11 +75,11 @@ int	ft_render_map(t_data *data)
 		x = 0;
 		while (x < data->map.columns)
 		{
-			ft_identify_sprite(data, y ,x);
+			ft_identify_sprite(data, y, x);
 			x++;
 		}
 		y++;
 	}
 	ft_print_movements(data);
-	return	(0);
+	return (0);
 }

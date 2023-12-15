@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:37:04 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 14:20:31 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:21:02 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	ft_player_move(t_data *data, int new_y, int new_x, int player_sprite)
 	last_y = data->map.player.y;
 	if (data->map.full[new_y][new_x] == EXIT && data->map.coins == 0)
 		ft_victory(data);
-	if (data->map.full[new_y][new_x] == FLOOR || data->map.full[new_y][new_x] == COINS)
+	if (data->map.full[new_y][new_x] == FLOOR || \
+	data->map.full[new_y][new_x] == COINS)
 	{
 		data->map.full[last_y][last_x] = FLOOR;
 		if (data->map.full[new_y][new_x] == COINS)

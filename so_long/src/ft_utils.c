@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 14:38:57 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 15:04:57 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:23:26 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_strappend(char	**s1, char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *)ft_calloc(((ft_strlen(*s1) + ft_strlen(s2)) + 1), sizeof(char));
+	str = (char *)ft_calloc(((ft_strlen(*s1) + \
+	ft_strlen(s2)) + 1), sizeof(char));
 	if (!str)
 		return (NULL);
 	ft_strlcpy(str, *s1, ft_strlen(*s1) + 1);

@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 19:28:27 by luynagda          #+#    #+#             */
-/*   Updated: 2023/12/15 14:54:15 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:22:21 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		ft_error_msg("Couldn't allocate mlx pointer.\n", data);
-	data->win = mlx_new_window(data->mlx, data->map.columns * IMG_WIDTH, data->map.rows * IMG_HEIGHT, "so_long");
+	data->win = mlx_new_window(data->mlx, data->map.columns * IMG_WIDTH, \
+	data->map.rows * IMG_HEIGHT, "so_long");
 	if (data->win == NULL)
 	{
 		free(data->mlx);
@@ -38,7 +39,7 @@ void	ft_init_mlx(t_data *data)
 t_image	ft_new_sprite(void *mlx, char *path, t_data *data)
 {
 	t_image	sprite;
-	
+
 	(void)data;
 	sprite.xpm = mlx_xpm_file_to_image(mlx, path, &sprite.x, &sprite.y);
 	if (sprite.xpm == NULL)
@@ -48,7 +49,7 @@ t_image	ft_new_sprite(void *mlx, char *path, t_data *data)
 
 void	ft_init_sprites(t_data *data)
 {
-	void *mlx;
+	void	*mlx;
 
 	mlx = data->mlx;
 	data->wall = ft_new_sprite(mlx, WALL_XPM, data);

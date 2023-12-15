@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 14:10:08 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 14:38:38 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/15 15:20:30 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_destroy_sprites(t_data *data)
 void	ft_free_map(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < data->map.rows)
 	{
