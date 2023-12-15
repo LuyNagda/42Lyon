@@ -5,12 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/12 13:04:08 by lunagda           #+#    #+#              #
-#    Updated: 2023/12/15 14:23:14 by lunagda          ###   ########.fr        #
+#    Created: 2023/12/15 15:59:25 by lunagda           #+#    #+#              #
+#    Updated: 2023/12/15 16:34:41 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
+
+NAME_BONUS	=	so_long_bonus
 
 CC			=	gcc
 
@@ -41,13 +43,25 @@ C_FILE		=	main.c				\
 				ft_close.c			\
 				ft_handle_keypress.c
 
+BONUS_FILE	=	main_bonus.c				\
+				ft_utils_bonus.c			\
+				ft_init_map_bonus.c			\
+				ft_check_map_bonus.c		\
+				ft_init_mlx_bonus.c			\
+				ft_render_map_bonus.c		\
+				ft_close_bonus.c			\
+				ft_handle_keypress_bonus.c
+
 SRC_DIR		=	./src/
+BONUS_DIR	=	./src_bonus/
 
 INC_DIR		=	./includes/
 
 SRC			=	$(addprefix $(SRC_DIR),$(C_FILE)) gnl/get_next_line.c gnl/get_next_line_utils.c
+SRC_BONUS	=	$(addprefix $(BONUS_DIR),$(BONUS_FILE)) gnl/get_next_line.c gnl/get_next_line_utils.c
 
 OBJ			=	$(SRC:.c=.o)
+BONUS_OBJ	=	$(SRC_BONUS:.c=.o)
 
 .c.o:
 	$(CC) $(FLAG) -c $< -o $@
@@ -69,6 +83,11 @@ $(NAME): lib mlx $(OBJ)
 	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -g3 -o $(NAME)
 	@echo "\033[1;32m./so_long created\n"
 
+bonus: lib mlx $(BONUS_OBJ)
+	@echo "\033[0;33m\nCOMPILING SO_LONG BONUS...\n"
+	$(CC) $(BONUS_OBJ) $(LIBFT_LIB) $(MLX_EX) -g3 -o $(NAME_BONUS)
+	@echo "\033[1;32m./so_long_bonus created\n"
+
 clean:
 	@echo "\033[0;31mDeleting Obj file in $(MLX_PATH)...\n"
 	@make clean -sC $(MLX_PATH)
@@ -78,13 +97,17 @@ clean:
 	@echo "\033[0;31mDeleting So_long object...\n"
 	@rm -f $(OBJ)
 	@echo "\033[1;32mDone\n"
+	@echo "\033[0;31mDeleting So_long_bonus object...\n"
+	@rm -f $(BONUS_OBJ)
+	@echo "\033[1;32mDone\n"
 
 fclean: clean
 	@echo "\033[0;31mDeleting so_long executable..."
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@make fclean -C $(LIBFT_PATH)
 	@echo "\033[1;32mDone\n"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
