@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 13:50:33 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/11 16:57:53 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/16 13:18:52 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ t_pipex	initialize_vars(t_pipex vars, int argc, char **argv, char **env)
 t_pipex	file_handling(t_pipex vars, char **argv, int argc, char **env)
 {
 	vars.f1 = open(argv[1], O_RDONLY);
-	vars.f2 = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (ft_strcmp(argv[1], "here_doc") == 0)
+		vars.f2 = open(argv[argc - 1], O_WRONLY | O_APPEND | O_CREAT, 0644);
+	else
+		vars.f2 = open(argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (vars.f1 < 0)
 		joint_error_msg(argv[1]);
 	if (vars.f2 < 0)
