@@ -6,7 +6,7 @@
 #    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:59:25 by lunagda           #+#    #+#              #
-#    Updated: 2023/12/15 16:34:41 by lunagda          ###   ########.fr        #
+#    Updated: 2023/12/16 15:49:10 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,10 @@ BONUS_FILE	=	main_bonus.c				\
 SRC_DIR		=	./src/
 BONUS_DIR	=	./src_bonus/
 
+HEADER		=	./includes/so_long.h
+
+BONUS_HEADER=	./src_bonus/so_long_bonus.h
+
 INC_DIR		=	./includes/
 
 SRC			=	$(addprefix $(SRC_DIR),$(C_FILE)) gnl/get_next_line.c gnl/get_next_line_utils.c
@@ -64,7 +68,7 @@ OBJ			=	$(SRC:.c=.o)
 BONUS_OBJ	=	$(SRC_BONUS:.c=.o)
 
 .c.o:
-	$(CC) $(FLAG) -c $< -o $@
+	$(CC) $(FLAG) -c $< -o $@ -I$(INC_DIR)
 
 all: $(NAME)
 
@@ -82,6 +86,9 @@ $(NAME): lib mlx $(OBJ)
 	@echo "\033[0;33m\nCOMPILING SO_LONG...\n"
 	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -g3 -o $(NAME)
 	@echo "\033[1;32m./so_long created\n"
+
+$(OBJ):	$(HEADER)
+$(BONUS_OBJ):	$(BONUS_HEADER)
 
 bonus: lib mlx $(BONUS_OBJ)
 	@echo "\033[0;33m\nCOMPILING SO_LONG BONUS...\n"
