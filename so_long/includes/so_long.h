@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:43:08 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 15:34:08 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/16 23:04:47 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
 
-# define WALL				'1'
-# define FLOOR				'0'
-# define COINS				'C'
-# define EXIT				'E'
-# define PLAYER				'P'
+# define WALL				"1"
+# define FLOOR				"0"
+# define COINS				"C"
+# define EXIT				"E"
+# define PLAYER				"P"
 
 # define WALL_XPM			"assets/wall.xpm"
 # define COIN_XPM			"assets/coin-bag.xpm"

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:43:08 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 15:35:18 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/16 23:05:31 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#ifndef SO_LONG_BONUS_H
 
-# define SO_LONG_H
+# define SO_LONG_BONUS_H
 
 # define FRONT				1
 # define LEFT				2
@@ -22,12 +22,12 @@
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
 
-# define WALL				'1'
-# define FLOOR				'0'
-# define COINS				'C'
-# define EXIT				'E'
-# define PLAYER				'P'
-# define TOXIC_RIVER		'T'
+# define WALL				"1"
+# define FLOOR				"0"
+# define COINS				"C"
+# define EXIT				"E"
+# define PLAYER				"P"
+# define TOXIC_RIVER		"T"
 
 # define TOXIC_RIVER_XPM	"assets/toxic-river.xpm"
 # define WALL_XPM			"assets/wall.xpm"
