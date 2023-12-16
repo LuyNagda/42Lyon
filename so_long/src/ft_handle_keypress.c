@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_handle_keypress.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:37:04 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 15:39:30 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/16 23:08:20 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_player_move(t_data *data, int new_y, int new_x, int player_sprite)
 
 int	ft_handle_keypress(int keysym, t_data *data)
 {
-	if (keysym == XK_Escape)
+	if (keysym == XK_Escape || keysym == XK_Q || keysym == XK_q)
 		ft_close(data);
 	if (keysym == XK_W || keysym == XK_w || keysym == XK_Up)
 		ft_player_move(data, data->map.player.y - 1, data->map.player.x, BACK);
