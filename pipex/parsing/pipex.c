@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/11 17:47:33 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/16 13:35:46 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	last_child(t_pipex vars, int old_pipe[2], int pipe[2])
 		error_msg("Dup", vars);
 	close(old_pipe[0]);
 	close(pipe[0]);
+	close(pipe[1]);
 	close(vars.f2);
 	if (vars.path == NULL)
 	{
@@ -86,7 +87,6 @@ void	pipex(t_pipex vars)
 			last_child(vars, old_pipe, vars.pipe);
 		close(vars.pipe[1]);
 		old_pipe[0] = vars.pipe[0];
-		waitpid(vars.child, &vars.status, 0);
 		i++;
 		free_command_path(vars.command, vars.path);
 	}
