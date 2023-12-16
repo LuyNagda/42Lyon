@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:19:24 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/16 13:35:46 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/16 15:22:09 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	first_child(t_pipex vars, int pipe[2])
 {
+	if (vars.f1 < 0)
+		exit(EXIT_FAILURE);
 	if (dup2(vars.f1, STDIN_FILENO) == -1)
 		error_msg("Dup", vars);
 	if (dup2(pipe[1], STDOUT_FILENO) == -1)
