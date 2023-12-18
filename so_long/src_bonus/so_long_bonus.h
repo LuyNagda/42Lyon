@@ -22,12 +22,12 @@
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
 
-# define WALL				"1"
-# define FLOOR				"0"
-# define COINS				"C"
-# define EXIT				"E"
-# define PLAYER				"P"
-# define TOXIC_RIVER		"T"
+# define WALL				'1'
+# define FLOOR				'0'
+# define COINS				'C'
+# define EXIT				'E'
+# define PLAYER				'P'
+# define TOXIC_RIVER			'T'
 
 # define TOXIC_RIVER_XPM	"assets/toxic-river.xpm"
 # define WALL_XPM			"assets/wall.xpm"

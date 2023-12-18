@@ -22,11 +22,11 @@
 # define IMG_HEIGHT			32
 # define IMG_WIDTH			32
 
-# define WALL				"1"
-# define FLOOR				"0"
-# define COINS				"C"
-# define EXIT				"E"
-# define PLAYER				"P"
+# define WALL				'1'
+# define FLOOR				'0'
+# define COINS				'C'
+# define EXIT				'E'
+# define PLAYER				'P'
 
 # define WALL_XPM			"assets/wall.xpm"
 # define COIN_XPM			"assets/coin-bag.xpm"
