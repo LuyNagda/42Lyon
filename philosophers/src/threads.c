@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:10:56 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:32:40 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:06:39 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	*philo_routine(void *pointer)
 		snooze(philo);
 		think(philo);
 	}
+	return (pointer);
 }
 
 void	create_threads(t_prog *prog)

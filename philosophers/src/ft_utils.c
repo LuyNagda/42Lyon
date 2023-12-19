@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:11 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:31:39 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/19 16:59:06 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	print_message(char *msg, t_philo *philo, int id)
 
 	time = get_current_time() - philo->start_time;
 	if (!dead(philo))
-		printf("%zu %d %s\n", time, id, msg);
+		printf("%06zu %d %s\n", time, id, msg);
 }
 
 int	ft_usleep(size_t milliseconds)

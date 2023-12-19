@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:21:17 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:33:05 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:57:52 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,16 @@ int	check_if_all_ate(t_philo *philos)
 	while (i < philos[0].num_of_philos)
 	{
 		pthread_mutex_lock(philos[i].meal_lock);
-		if (philos[i].meals_eaten >= philos[i].num_times_to_eat)
+		if (philos[i].meals_eaten >= philos[0].num_times_to_eat)
 			finished_eating++;
 		pthread_mutex_unlock(philos[i].meal_lock);
 		i++;
 	}
 	if (finished_eating == philos[0].num_of_philos)
 	{
-		pthread_mutex_lock(philos[i].dead_lock);
+		pthread_mutex_lock(philos[0].dead_lock);
 		*philos->dead = 1;
-		pthread_mutex_unlock(philos[i].dead_lock);
+		pthread_mutex_unlock(philos[0].dead_lock);
 		return (1);
 	}
 	return (0);
@@ -78,4 +78,5 @@ void	*monitor(void *pointer)
 		if (check_if_dead(philos) || check_if_all_ate(philos))
 			break ;
 	}
+	return (pointer);
 }

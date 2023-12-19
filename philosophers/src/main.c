@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:07:17 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:10:15 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/19 16:45:08 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_philo			philos[PHILO_MAX];
 	pthread_mutex_t	forks[PHILO_MAX];
 
-	if (argc != 4 && argc != 5)
+	if (argc != 5 && argc != 6)
 		return (printf("There has to be 4 or 5 arguments.\n"), 1);
 	if (ft_check_args(argv) == 1)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:53:18 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:26:37 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:55:57 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	snooze(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->r_fork);
-	print_message("took right fork", philo, philo->id);
+	print_message("has taken a fork", philo, philo->id);
 	if (philo->num_of_philos == 1)
 	{
 		ft_usleep(philo->time_to_die);
@@ -34,7 +34,7 @@ void	eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(philo->l_fork);
-	print_message("took left fork", philo, philo->id);
+	print_message("has taken a fork", philo, philo->id);
 	philo->eating = 1;
 	print_message("is eating", philo, philo->id);
 	pthread_mutex_lock(philo->meal_lock);
