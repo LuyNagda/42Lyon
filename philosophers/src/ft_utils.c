@@ -6,32 +6,18 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:11 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/18 16:45:09 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/19 16:31:39 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-size_t	ft_is_number(char *s)
+int	ft_atoi(char *s)
 {
 	int	i;
+	int	n;
+	int	negative;
 
-	i = 0;
-	if (s[i] == '+' || s[i] == '-')
-		i++;
-	while (s[i] && s[i] >= '0' && s[i] <= '9')
-		i++;
-	if (s[i] == '\0')
-		return (1);
-	return (0);
-}
-
-size_t	ft_atoi(char *s)
-{
-	size_t	i;
-	size_t	n;
-	size_t	negative;
-	
 	i = 0;
 	n = 0;
 	negative = 1;
@@ -50,24 +36,30 @@ size_t	ft_atoi(char *s)
 	return (n * negative);
 }
 
-int	ft_check_args(char **argv)
+size_t	get_current_time(void)
 {
-	if (ft_is_number(argv[1]) == 0 || ft_is_number(argv[2]) == 0 || 
-		ft_is_number(argv[3]) == 0 || ft_is_number(argv[4]) == 0)
-	{
-		printf("The arguments have to be numbers.\n");
-		return (1);
-	}
-	if (ft_atoi(argv[1]) == 0 || ft_atoi(argv[2]) == 0 || 
-		ft_atoi(argv[3]) == 0 || ft_atoi(argv[4]) == 0)
-	{
-		printf("The arguments have to be 1 or above.\n");
-		return (1);
-	}
-	if (ft_atoi(argv[1]) > 200)
-	{
-		printf("The number of philosophers has to be 200 or below.\n");
-		return (1);
-	}
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+void	print_message(char *msg, t_philo *philo, int id)
+{
+	size_t	time;
+
+	time = get_current_time() - philo->start_time;
+	if (!dead(philo))
+		printf("%zu %d %s\n", time, id, msg);
+}
+
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
 	return (0);
 }

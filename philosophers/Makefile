@@ -6,7 +6,7 @@
 #    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 12:02:11 by lunagda           #+#    #+#              #
-#    Updated: 2023/12/18 13:08:39 by lunagda          ###   ########.fr        #
+#    Updated: 2023/12/19 16:23:17 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,15 @@ NAME	=	philo
 
 CC		=	gcc
 
-FLAG	=	-Wall -Wextra -Werror
+FLAG	=	-Wall -Wextra -Werror -pthread
 
-SRC		=	src/philo.c		\
-			src/ft_utils.c
+SRC		=	src/main.c				\
+			src/ft_utils.c			\
+			src/init.c				\
+			src/monitor.c			\
+			src/routine_functions.c	\
+			src/threads.c			\
+			src/ft_check_args.c
 
 HEADER	=	./includes/philo.h
 
