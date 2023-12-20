@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:10:56 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 17:06:39 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:55:56 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*philo_routine(void *pointer)
 
 	philo = (t_philo *)pointer;
 	if (philo->id % 2 == 0)
-		ft_usleep(1);
+		ft_msleep(0.9 * philo->time_to_eat);
 	while (!dead(philo))
 	{
 		eat(philo);

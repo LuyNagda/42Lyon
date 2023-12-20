@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:02:45 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:30:56 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:55:45 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_prog
 int		ft_atoi(char *s);
 size_t	get_current_time(void);
 int		ft_check_args(char **argv);
-int		ft_usleep(size_t milliseconds);
+int		ft_msleep(size_t milliseconds);
 void	print_message(char *msg, t_philo *philo, int id);
 void	init_prog(t_prog *philo, t_philo *philos);
 void	init_forks(pthread_mutex_t *forks, char **argv);

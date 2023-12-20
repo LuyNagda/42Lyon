@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:11 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:59:06 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:55:33 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	print_message(char *msg, t_philo *philo, int id)
 		printf("%06zu %d %s\n", time, id, msg);
 }
 
-int	ft_usleep(size_t milliseconds)
+int	ft_msleep(size_t milliseconds)
 {
 	size_t	start;
 

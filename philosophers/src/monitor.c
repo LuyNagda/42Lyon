@@ -6,19 +6,20 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 15:21:17 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 17:57:52 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 13:15:28 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	philo_dead(t_philo *philo)
+int	philo_dead(t_philo *philo, size_t time_to_die)
 {
 	pthread_mutex_lock(philo->meal_lock);
-	if ((get_current_time() - philo->last_meal) >= philo->time_to_die
+	if ((get_current_time() - philo->last_meal) >= time_to_die
 		&& philo->eating == 0)
 		return (pthread_mutex_unlock(philo->meal_lock), 1);
-	return (pthread_mutex_unlock(philo->meal_lock), 0);
+	pthread_mutex_unlock(philo->meal_lock);
+	return (0);
 }
 
 int	check_if_dead(t_philo *philos)
@@ -28,7 +29,7 @@ int	check_if_dead(t_philo *philos)
 	i = 0;
 	while (i < philos[0].num_of_philos)
 	{
-		if (philo_dead(&philos[i]))
+		if (philo_dead(&philos[i], philos[i].time_to_die))
 		{
 			print_message("died", &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[0].dead_lock);
@@ -75,7 +76,7 @@ void	*monitor(void *pointer)
 	philos = (t_philo *)pointer;
 	while (1)
 	{
-		if (check_if_dead(philos) || check_if_all_ate(philos))
+		if (check_if_dead(philos) == 1 || check_if_all_ate(philos) == 1)
 			break ;
 	}
 	return (pointer);

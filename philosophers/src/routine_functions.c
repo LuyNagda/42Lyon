@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:53:18 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 17:55:57 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 14:55:54 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	think(t_philo *philo)
 void	snooze(t_philo *philo)
 {
 	print_message("is sleeping", philo, philo->id);
-	ft_usleep(philo->time_to_sleep);
+	ft_msleep(philo->time_to_sleep);
 }
 
 void	eat(t_philo *philo)
@@ -29,7 +29,7 @@ void	eat(t_philo *philo)
 	print_message("has taken a fork", philo, philo->id);
 	if (philo->num_of_philos == 1)
 	{
-		ft_usleep(philo->time_to_die);
+		ft_msleep(philo->time_to_die);
 		pthread_mutex_unlock(philo->r_fork);
 		return ;
 	}
@@ -41,7 +41,7 @@ void	eat(t_philo *philo)
 	philo->last_meal = get_current_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
-	ft_usleep(philo->time_to_eat);
+	ft_msleep(philo->time_to_eat);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_unlock(philo->l_fork);
