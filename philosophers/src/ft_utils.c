@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:11 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/20 14:55:33 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:24:16 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,21 @@ int	ft_msleep(size_t milliseconds)
 	while ((get_current_time() - start) < milliseconds)
 		usleep(500);
 	return (0);
+}
+
+void	destroy_all(char *str, t_prog *prog, pthread_mutex_t *forks)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		printf("%s\n", str);
+	pthread_mutex_destroy(&prog->dead_lock);
+	pthread_mutex_destroy(&prog->meal_lock);
+	pthread_mutex_destroy(&prog->write_lock);
+	while (i < prog->philos[0].num_of_philos)
+	{
+		pthread_mutex_destroy(&forks[i]);
+		i++;
+	}
 }

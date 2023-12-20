@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:10:56 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/20 14:55:56 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:24:52 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,28 @@ void	*philo_routine(void *pointer)
 	return (pointer);
 }
 
-void	create_threads(t_prog *prog)
+void	create_threads(t_prog *prog, pthread_mutex_t *forks)
 {
 	int			i;
 	pthread_t	observer;
 
 	i = 0;
 	if (pthread_create(&observer, NULL, &monitor, prog->philos) != 0)
-		exit(0);
+		destroy_all("Error while creating thread.", prog, forks);
 	while (i < prog->philos[0].num_of_philos)
 	{
 		if (pthread_create(&prog->philos[i].thread, NULL,
 				&philo_routine, &prog->philos[i]) != 0)
-			exit(0);
+			destroy_all("Error while creating thread.", prog, forks);
 		i++;
 	}
 	if (pthread_join(observer, NULL) != 0)
-		exit(0);
+		destroy_all("Error while creating thread.", prog, forks);
 	i = 0;
 	while (i < prog->philos[0].num_of_philos)
 	{
 		if (pthread_join(prog->philos[i].thread, NULL) != 0)
-			exit(0);
+			destroy_all("Error while creating thread.", prog, forks);
 		i++;
 	}
 }

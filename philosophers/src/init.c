@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:23:55 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/20 12:52:53 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:25:58 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_philos(t_philo *philos, t_prog *prog,
 		philos[i].last_meal = get_current_time();
 		philos[i].dead = &prog->dead_flag;
 		philos[i].dead_lock = &prog->dead_lock;
-		philos[i].meal_lock = &prog->eat_lock;
+		philos[i].meal_lock = &prog->meal_lock;
 		philos[i].write_lock = &prog->write_lock;
 		philos[i].l_fork = &forks[i];
 		if (i == 0)
@@ -68,6 +68,6 @@ void	init_prog(t_prog *prog, t_philo *philos)
 	prog->dead_flag = 0;
 	prog->philos = philos;
 	pthread_mutex_init(&prog->dead_lock, NULL);
-	pthread_mutex_init(&prog->eat_lock, NULL);
+	pthread_mutex_init(&prog->meal_lock, NULL);
 	pthread_mutex_init(&prog->write_lock, NULL);
 }

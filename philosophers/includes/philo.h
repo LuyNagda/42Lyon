@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:02:45 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/20 14:55:45 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:24:05 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_prog
 	int				dead_flag;
 	pthread_mutex_t	write_lock;
 	pthread_mutex_t	dead_lock;
-	pthread_mutex_t	eat_lock;
+	pthread_mutex_t	meal_lock;
 	t_philo			*philos;
 }	t_prog;
 
@@ -66,6 +66,7 @@ void	think(t_philo *philo);
 void	snooze(t_philo *philo);
 void	eat(t_philo *philo);
 void	*monitor(void *pointer);
-void	create_threads(t_prog *prog);
+void	create_threads(t_prog *prog, pthread_mutex_t *forks);
+void	destroy_all(char *str, t_prog *prog, pthread_mutex_t *forks);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:07:17 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:45:08 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/20 15:25:44 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 	init_prog(&prog, philos);
 	init_forks(forks, argv);
 	init_philos(philos, &prog, forks, argv);
-	create_threads(&prog);
+	create_threads(&prog, forks);
+	destroy_all(NULL, &prog, forks);
 	return (0);
 }
