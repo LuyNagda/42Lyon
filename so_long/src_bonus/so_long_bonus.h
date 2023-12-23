@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:43:08 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/16 23:05:31 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:15:16 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define COINS				'C'
 # define EXIT				'E'
 # define PLAYER				'P'
-# define TOXIC_RIVER			'T'
+# define TOXIC_RIVER		'T'
 
 # define TOXIC_RIVER_XPM	"assets/toxic-river.xpm"
 # define WALL_XPM			"assets/wall.xpm"
@@ -105,8 +105,9 @@ int		ft_render_map(t_data *data);
 int		ft_handle_keypress(int keysym, t_data *data);
 int		ft_close(t_data *data);
 void	ft_error_msg(char *msg, t_data *data);
-void	ft_free(char **s);
 void	free_all_stuff(t_data *data);
 void	ft_free_map(t_data *data);
+int		ft_map_solver(t_data *data, char **argv);
+void	ft_count_map_parameters(t_data *data);
 
 #endif

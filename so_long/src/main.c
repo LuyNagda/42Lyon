@@ -6,7 +6,7 @@
 /*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:42:50 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/15 14:51:21 by lunagda          ###   ########.fr       */
+/*   Updated: 2023/12/23 12:42:34 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	if (!data)
 		return (EXIT_FAILURE);
 	ft_check_command_line_arguments(argc, argv, data);
+	ft_map_solver(data, argv);
 	ft_init_map(data, argv);
 	ft_init_vars(data);
 	ft_check_map(data);

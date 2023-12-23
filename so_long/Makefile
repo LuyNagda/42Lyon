@@ -6,7 +6,7 @@
 #    By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/15 15:59:25 by lunagda           #+#    #+#              #
-#    Updated: 2023/12/16 15:49:10 by lunagda          ###   ########.fr        #
+#    Updated: 2023/12/23 13:01:08 by lunagda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME_BONUS	=	so_long_bonus
 
 CC			=	gcc
 
-FLAG		=	-Wall -Wextra -Werror
+FLAG		=	-Wall -Wextra -Werror -g
 
 LIBFT_PATH	=	./libft/
 
@@ -38,6 +38,7 @@ C_FILE		=	main.c				\
 				ft_utils.c			\
 				ft_init_map.c		\
 				ft_check_map.c		\
+				ft_map_valid.c		\
 				ft_init_mlx.c		\
 				ft_render_map.c		\
 				ft_close.c			\
@@ -47,6 +48,7 @@ BONUS_FILE	=	main_bonus.c				\
 				ft_utils_bonus.c			\
 				ft_init_map_bonus.c			\
 				ft_check_map_bonus.c		\
+				ft_map_valid_bonus.c		\
 				ft_init_mlx_bonus.c			\
 				ft_render_map_bonus.c		\
 				ft_close_bonus.c			\
@@ -84,7 +86,7 @@ mlx:
 
 $(NAME): lib mlx $(OBJ)
 	@echo "\033[0;33m\nCOMPILING SO_LONG...\n"
-	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -g3 -o $(NAME)
+	$(CC) $(OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME)
 	@echo "\033[1;32m./so_long created\n"
 
 $(OBJ):	$(HEADER)
@@ -92,7 +94,7 @@ $(BONUS_OBJ):	$(BONUS_HEADER)
 
 bonus: lib mlx $(BONUS_OBJ)
 	@echo "\033[0;33m\nCOMPILING SO_LONG BONUS...\n"
-	$(CC) $(BONUS_OBJ) $(LIBFT_LIB) $(MLX_EX) -g3 -o $(NAME_BONUS)
+	$(CC) $(BONUS_OBJ) $(LIBFT_LIB) $(MLX_EX) -o $(NAME_BONUS)
 	@echo "\033[1;32m./so_long_bonus created\n"
 
 clean:

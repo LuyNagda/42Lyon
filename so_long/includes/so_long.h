@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:43:08 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/16 23:04:47 by luynagda         ###   ########.fr       */
+/*   Updated: 2023/12/23 13:03:06 by lunagda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
+# include <stdio.h>
 
 typedef struct s_position
 {
@@ -101,8 +102,9 @@ int		ft_render_map(t_data *data);
 int		ft_handle_keypress(int keysym, t_data *data);
 int		ft_close(t_data *data);
 void	ft_error_msg(char *msg, t_data *data);
-void	ft_free(char **s);
 void	free_all_stuff(t_data *data);
 void	ft_free_map(t_data *data);
+void	ft_count_map_parameters(t_data *data);
+int		ft_map_solver(t_data *data, char **argv);
 
 #endif
