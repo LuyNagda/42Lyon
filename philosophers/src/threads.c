@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:10:56 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/20 15:24:52 by lunagda          ###   ########.fr       */
+/*   Updated: 2024/01/02 20:03:35 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,17 @@ void	*philo_routine(void *pointer)
 		ft_msleep(0.9 * philo->time_to_eat);
 	while (!dead(philo))
 	{
+		if (dead(philo))
+			return (NULL);
 		eat(philo);
+		if (dead(philo))
+			return (NULL);
 		snooze(philo);
+		if (dead(philo))
+			return (NULL);
 		think(philo);
+		if (dead(philo))
+			return (NULL);
 	}
 	return (pointer);
 }

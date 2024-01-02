@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:11 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/20 15:24:16 by lunagda          ###   ########.fr       */
+/*   Updated: 2024/01/02 19:56:24 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,11 @@ void	print_message(char *msg, t_philo *philo, int id)
 
 	time = get_current_time() - philo->start_time;
 	if (!dead(philo))
+	{
+		pthread_mutex_lock(philo->write_lock);
 		printf("%06zu %d %s\n", time, id, msg);
+		pthread_mutex_unlock(philo->write_lock);
+	}
 }
 
 int	ft_msleep(size_t milliseconds)
@@ -60,7 +64,7 @@ int	ft_msleep(size_t milliseconds)
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-		usleep(500);
+		usleep(1000);
 	return (0);
 }
 
