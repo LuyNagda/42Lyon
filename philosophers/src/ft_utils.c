@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 12:18:11 by lunagda           #+#    #+#             */
-/*   Updated: 2024/01/02 20:24:58 by luynagda         ###   ########.fr       */
+/*   Updated: 2024/01/03 17:06:44 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,13 @@ void	print_message(char *msg, t_philo *philo, int id)
 	}
 }
 
-int	ft_msleep(size_t milliseconds, t_philo *philo)
+int	ft_msleep(size_t milliseconds)
 {
 	size_t	start;
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-	{
-		if (dead(philo))
-			return (0);
 		usleep(500);
-	}
 	return (0);
 }
 
