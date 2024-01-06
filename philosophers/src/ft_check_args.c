@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_args.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lunagda <lunagda@student.42.fr>            +#+  +:+       +#+        */
+/*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:59:42 by lunagda           #+#    #+#             */
-/*   Updated: 2023/12/19 16:36:36 by lunagda          ###   ########.fr       */
+/*   Updated: 2024/01/06 21:41:30 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ int	ft_check_args(char **argv)
 {
 	if (check_for_num(argv) == 1)
 		return (1);
+	if (argv[5])
+	{
+		if (ft_is_number(argv[5]) == 0)
+			return (printf("Number of meals has to be a number.\n"), 1);
+		if (ft_atoi(argv[5]) < 0)
+			return (printf("Number of meals has to be a positive number (in ms).\n")
+				, 1);
+	}
 	if (ft_atoi(argv[1]) > PHILO_MAX)
 		return (printf("The number of philosophers is more than expected.\n")
 			, 1);
