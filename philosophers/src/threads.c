@@ -6,7 +6,7 @@
 /*   By: luynagda <luynagda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:10:56 by lunagda           #+#    #+#             */
-/*   Updated: 2024/01/03 17:07:18 by luynagda         ###   ########.fr       */
+/*   Updated: 2024/01/07 14:01:43 by luynagda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,9 @@ void	*philo_routine(void *pointer)
 		ft_msleep(0.9 * philo->time_to_eat);
 	while (!dead(philo))
 	{
-		if (dead(philo))
-			return (NULL);
 		eat(philo);
-		if (dead(philo))
-			return (NULL);
 		snooze(philo);
-		if (dead(philo))
-			return (NULL);
 		think(philo);
-		if (dead(philo))
-			return (NULL);
 	}
 	return (pointer);
 }
